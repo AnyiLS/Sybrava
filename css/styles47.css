@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: hsl(0, 0%, 100%);
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+html {
+  background: hsl(0, 0%, 100%);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ancho {
+  position: relative !important;
+  width: 100vw;
+  height: calc((10 / 16) * 100vw);
+  left: calc(50% - 50vw);
+  top: calc(50% - (((10 / 16) * 100vw) / 2));
+}
+
+.alto {
+  width: calc((16 / 10) * 100vh);
+  height: 100vh;
+  top: calc(50% - 50vh);
+  left: calc(50% - (((16 / 10) * 100vh) / 2));
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.abs {
+  position: absolute;
+}
+
+.back {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.portada {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imagenes/portada47.webp);
+}
+
+.parte1 {
+  position: absolute;
+  top: 56%;
+  left: 18%;
+  width: 7%;
+  cursor: pointer;
+}
+
+.parte2 {
+  position: absolute;
+  top: 31%;
+  left: 4%;
+  width: 18%;
+  cursor: pointer;
+}
+
+.parte3 {
+  position: absolute;
+  top: 32%;
+  left: 19%;
+  width: 15%;
+  cursor: pointer;
+}
+
+.parte4 {
+  position: absolute;
+  top: 37%;
+  left: -5%;
+  width: 17%;
+  cursor: pointer;
+}
+
+.parte5 {
+  position: absolute;
+  top: 47%;
+  left: 11%;
+  width: 7%;
+  cursor: pointer;
+}
+
+.parte6 {
+  position: absolute;
+  top: 63%;
+  left: 25%;
+  width: 4%;
+  cursor: pointer;
+}
+
+.parte7 {
+  position: absolute;
+  top: 42%;
+  left: 19%;
+  width: 12%;
+  cursor: pointer;
+}
+
+.parte8 {
+  position: absolute;
+  top: 36%;
+  left: 18%;
+  width: 13%;
+  cursor: pointer;
+}
+
+.parte9 {
+  position: absolute;
+  top: 56%;
+  left: 5%;
+  width: 3%;
+  cursor: pointer;
+}
