@@ -64,10 +64,12 @@ document.querySelectorAll(".quiz-option").forEach((option) => {
     if (isCorrect) {
       option.classList.add("correct");
       let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = isCorrect ? `${questionNumber}` : "Incorrecto";
+      results[questionNumber - 1] = isCorrect
+        ? `${questionNumber}`
+        : "Incorrecto";
       localStorage.setItem("quizResults", JSON.stringify(results));
       setTimeout(() => {
-        window.location.href = `./index49.html`;
+        window.location.href = `./index56.html`;
       }, 2000);
     } else {
       option.classList.add("incorrect");

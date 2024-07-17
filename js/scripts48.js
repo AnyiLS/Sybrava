@@ -67,7 +67,7 @@ document.querySelectorAll(".quiz-option").forEach((option) => {
       results[questionNumber - 1] = isCorrect ? `${questionNumber}` : "Incorrecto";
       localStorage.setItem("quizResults", JSON.stringify(results));
       setTimeout(() => {
-        window.location.href = `./index49.html`;
+        window.location.href = `./index51.html`;
       }, 2000);
     } else {
       option.classList.add("incorrect");

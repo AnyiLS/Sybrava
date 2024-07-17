@@ -2,23 +2,60 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resultados del Quiz</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Resultados</title>
+    <style>
+      .svg-container {
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="results"></div>
+
     <script>
-      $(document).ready(function () {
-        const resultContainer = $("#result");
-        for (let i = 1; i <= 9; i++) {
-          const isCorrect = localStorage.getItem(`question_${i}`) === "true";
-          resultContainer.append(
-            `<div>Question ${i}: ${isCorrect ? "Correct" : "Incorrect"}</div>`
-          );
+      // Cargar las respuestas desde localStorage
+      const results = JSON.parse(localStorage.getItem("quizResults")) || [];
+      console.log(results);
+
+      const svgMap = {
+        1: "./imagenes/parte1.svg",
+        2: "./imagenes/parte2.svg",
+        3: "./imagenes/parte3.svg",
+        4: "./imagenes/parte4.svg",
+        5: "./imagenes/parte5.svg",
+        6: "./imagenes/parte6.svg",
+        7: "./imagenes/parte7.svg",
+        8: "./imagenes/parte8.svg",
+        9: "./imagenes/parte9.svg",
+      };
+
+      const svgStyles = {
+        1: "",
+        2: "",
+        3: "",
+        4: "",
+        5: "",
+        6: "",
+        7: "",
+        8: "",
+        9: "",
+      };
+
+      const resultsContainer = document.getElementById("results");
+
+      Object.keys(svgMap).forEach((questionNumber) => {
+        const index = parseInt(questionNumber, 10) - 1;
+        if (results[index] === `${questionNumber}`) {
+          const img = document.createElement("img");
+          img.src = svgMap[questionNumber];
+          img.alt = `SVG para pregunta ${questionNumber}`;
+          img.classList.add("svg-container");
+          img.style.cssText = svgStyles[questionNumber];
+          resultsContainer.appendChild(img);
         }
       });
     </script>
-  </head>
-  <body>
-    <div id="result"></div>
   </body>
 </html>
