@@ -45,7 +45,7 @@ $(document).ready(function () {
 
       // Store the correctness of the first question
       if (questionNumber === 6) {
-        localStorage.setItem("part1Correct", true);
+        localStorage.setItem("part6Correct", true);
       }
 
       $("#miPopupCorrect").show();
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
       // Store the correctness of the first question
       if (questionNumber === 6) {
-        localStorage.setItem("part1Correct", false);
+        localStorage.setItem("part6Correct", false);
       }
 
       $("#miPopupIncorrect").show();
