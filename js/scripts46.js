@@ -40,37 +40,3 @@ $(document).ready(function () {
   // Inicialización al cargar la página
   CambioVentana();
 });
-
-// Lógica preguntas:
-
-// 1
-
-document.querySelectorAll(".quiz-option").forEach((option) => {
-  option.addEventListener("click", () => {
-    const isCorrect = option.getAttribute("data-correct") === "true";
-    const questionNumber = parseInt(
-      option.closest(".quiz-question").getAttribute("data-question"),
-      10
-    );
-
-    document
-      .querySelectorAll(
-        `.quiz-question[data-question="${questionNumber}"] .quiz-option`
-      )
-      .forEach((opt) => {
-        opt.classList.remove("correct", "incorrect");
-      });
-
-    if (isCorrect) {
-      option.classList.add("correct");
-      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = isCorrect ? `${questionNumber}` : "Incorrecto";
-      localStorage.setItem("quizResults", JSON.stringify(results));
-      setTimeout(() => {
-        window.location.href = `./index49.html`;
-      }, 2000);
-    } else {
-      option.classList.add("incorrect");
-    }
-  });
-});

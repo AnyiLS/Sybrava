@@ -16,11 +16,15 @@ html {
 }
 
 .ancho {
-  position: relative !important;
+  position: absolute;
   width: 100vw;
-  height: calc((10 / 16) * 100vw);
-  left: calc(50% - 50vw);
-  top: calc(50% - (((10 / 16) * 100vw) / 2));
+  height: 56.25vw; /* 16:9 aspect ratio */
+  max-height: 100vh;
+  max-width: 177.78vh; /* 16:9 aspect ratio */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
 }
 
 .alto {
@@ -59,13 +63,21 @@ body {
   background-size: cover;
   width: 100%;
   height: 100%;
-  background-image: url(../imagenes/portada47.webp);
+  background-image: url(../imagenes/body.webp);
+}
+
+.portadaresults {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imagenes/body.webp);
 }
 
 .parte1 {
   position: absolute;
   top: 56%;
-  left: 18%;
+  left: 20%;
   width: 7%;
   cursor: pointer;
 }
@@ -73,7 +85,7 @@ body {
 .parte2 {
   position: absolute;
   top: 31%;
-  left: 4%;
+  left: 7%;
   width: 18%;
   cursor: pointer;
 }
@@ -81,7 +93,7 @@ body {
 .parte3 {
   position: absolute;
   top: 32%;
-  left: 19%;
+  left: 21%;
   width: 15%;
   cursor: pointer;
 }
@@ -89,7 +101,7 @@ body {
 .parte4 {
   position: absolute;
   top: 37%;
-  left: -5%;
+  left: -3%;
   width: 17%;
   cursor: pointer;
 }
@@ -97,7 +109,7 @@ body {
 .parte5 {
   position: absolute;
   top: 47%;
-  left: 11%;
+  left: 13%;
   width: 7%;
   cursor: pointer;
 }
@@ -105,7 +117,7 @@ body {
 .parte6 {
   position: absolute;
   top: 63%;
-  left: 25%;
+  left: 26.5%;
   width: 4%;
   cursor: pointer;
 }
@@ -113,7 +125,7 @@ body {
 .parte7 {
   position: absolute;
   top: 42%;
-  left: 19%;
+  left: 21%;
   width: 12%;
   cursor: pointer;
 }
@@ -121,7 +133,7 @@ body {
 .parte8 {
   position: absolute;
   top: 36%;
-  left: 18%;
+  left: 20%;
   width: 13%;
   cursor: pointer;
 }
@@ -129,7 +141,41 @@ body {
 .parte9 {
   position: absolute;
   top: 56%;
-  left: 5%;
+  left: 9%;
   width: 3%;
   cursor: pointer;
+}
+
+@font-face {
+  font-family: "volta-modern";
+  src: url(../fonts/volta_modern_display_55_roman.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "volta-bold";
+  src: url(../fonts/volta_modern_display_75_bold.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+.puntaje {
+  font-family: "volta-modern", sans-serif;
+  font-size: 210%;
+  color: #002068;
+  text-align: center;
+  position: absolute;
+  top: 85%;
+  left: 62.3%;
+}
+
+.marcador {
+  font-family: "volta-bold", sans-serif;
+}
+
+@media only screen and (width: 1280px) {
+  .puntaje {
+    font-size: 0.1rem;
+  }
 }

@@ -1,76 +1,172 @@
 $(document).ready(function () {
-  // Sonido
-  function playAudio() {
-    document.getElementById("audio").play();
-  }
-
-  function playAudio1() {
-    document.getElementById("audio1").play();
-  }
-
-  function playAudio2() {
-    document.getElementById("audio2").play();
+  // Audio functions
+  function playAudio(id) {
+    document.getElementById(id).play();
   }
 
   // Dimensiones
-  var htmlancho;
-  var htmlalto;
-  var bodyancho;
-  var bodyalto;
-  var id;
+  let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
 
-  function CambioVentana() {
+  function cambioVentana() {
     htmlancho = $("html").width();
     htmlalto = $("html").height();
     bodyancho = $("body").width();
     bodyalto = $("body").height();
+
     if ($("body").hasClass("alto") && bodyancho > htmlancho) {
       $("body").removeClass("alto").addClass("ancho");
-    }
-    if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
+    } else if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
       $("body").removeClass("ancho").addClass("alto");
     }
   }
 
-  $(window).resize(function () {
-    clearTimeout(id);
-    id = setTimeout(CambioVentana, 500);
+  $(window).on("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(cambioVentana, 500);
   });
 
-  // Inicialización al cargar la página
-  CambioVentana();
-});
-
-// Lógica preguntas:
-
-// 1
-
-document.querySelectorAll(".quiz-option").forEach((option) => {
-  option.addEventListener("click", () => {
-    const isCorrect = option.getAttribute("data-correct") === "true";
+  $(".quiz-option").on("click", function () {
+    const $option = $(this);
+    const isCorrect = $option.data("correct") === true;
     const questionNumber = parseInt(
-      option.closest(".quiz-question").getAttribute("data-question"),
+      $option.closest(".quiz-question").data("question"),
       10
     );
 
-    document
-      .querySelectorAll(
-        `.quiz-question[data-question="${questionNumber}"] .quiz-option`
-      )
-      .forEach((opt) => {
-        opt.classList.remove("correct", "incorrect");
-      });
+    $(
+      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
+    ).removeClass("correct incorrect");
 
     if (isCorrect) {
-      option.classList.add("correct");
+      $option.addClass("correct");
       let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = isCorrect ? `${questionNumber}` : "Incorrecto";
+      results[questionNumber - 1] = `${questionNumber}`;
       localStorage.setItem("quizResults", JSON.stringify(results));
+
+      updateScore(results);
+
+      $("#miPopupCorrect").show();
+
       setTimeout(() => {
-        window.location.href = `./index50.html`;
+        window.location.href = `./index49.html`;
       }, 2000);
     } else {
-      option.classList.add("incorrect");
+      $option.addClass("incorrect");
+      $("#miPopupIncorrect").show();
     }
   });
+
+  function togglePopup(mostrarBtn, cerrarBtn, popup) {
+    if (mostrarBtn) {
+      mostrarBtn.on("click", function () {
+        popup.show();
+      });
+    }
+
+    cerrarBtn.on("click", function () {
+      popup.hide();
+    });
+  }
+
+  function updateScore(results) {
+    const score = results.filter(Boolean).length;
+    $("#marcador").text(score);
+  }
+
+  togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
+  togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
+
+  cambioVentana();
+
+  let results = JSON.parse(localStorage.getItem("quizResults")) || [];
+  updateScore(results);
+
+  const part1Correct = localStorage.getItem("part1Correct") === "true";
+  if (part1Correct) {
+    $("#parte1").css({
+      top: "58%",
+      left: "73%",
+      transform: "rotate(-18deg)",
+    });
+  }
+
+  const part2Correct = localStorage.getItem("part2Correct") === "true";
+  if (part2Correct) {
+    $("#parte2").css({
+      scale: "0.95",
+      top: "50.8%",
+      left: "63.3%",
+      transform: "rotate(-139.3deg)",
+    });
+  }
+
+  const part3Correct = localStorage.getItem("part3Correct") === "true";
+  if (part3Correct) {
+    $("#parte3").css({
+      scale: "0.95",
+      top: "47.1%",
+      left: "64.6%",
+      transform: "rotate(-52deg)",
+    });
+  }
+
+  const part4Correct = localStorage.getItem("part4Correct") === "true";
+  if (part4Correct) {
+    $("#parte4").css({
+      scale: "0.95",
+      top: "47.7%",
+      left: "64.4%",
+      transform: "rotate(-49.2deg)",
+    });
+  }
+
+  const part5Correct = localStorage.getItem("part5Correct") === "true";
+  if (part5Correct) {
+    $("#parte5").css({
+      scale: "1",
+      top: "38.1%",
+      left: "67.3%",
+      transform: "rotate(-31deg)",
+    });
+  }
+
+  const part6Correct = localStorage.getItem("part6Correct") === "true";
+  if (part6Correct) {
+    $("#parte6").css({
+      scale: ".8",
+      top: "44.6%",
+      left: "63.7%",
+      transform: "rotate(-5deg)",
+    });
+  }
+
+  const part7Correct = localStorage.getItem("part7Correct") === "true";
+  if (part7Correct) {
+    $("#parte7").css({
+      scale: ".98",
+      top: "41.3%",
+      left: "60.9%",
+      transform: "rotate(-3.3deg)",
+    });
+  }
+
+  const part8Correct = localStorage.getItem("part8Correct") === "true";
+  if (part8Correct) {
+    $("#parte8").css({
+      scale: "1.1",
+      top: "45.1%",
+      left: "62%",
+      transform: "rotate(1.6deg)",
+    });
+  }
+
+  const part9Correct = localStorage.getItem("part9Correct") === "true";
+  if (part9Correct) {
+    $("#parte9").css({
+      scale: "0.95",
+      top: "63.1%",
+      left: "63.7%",
+      transform: "rotate(-1.3deg)",
+    });
+  }
 });

@@ -44,7 +44,7 @@ $(document).ready(function () {
       localStorage.setItem("quizResults", JSON.stringify(results));
 
       // Store the correctness of the first question
-      if (questionNumber === 4) {
+      if (questionNumber === 9) {
         localStorage.setItem("part1Correct", true);
       }
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
       $option.addClass("incorrect");
 
       // Store the correctness of the first question
-      if (questionNumber === 4) {
+      if (questionNumber === 9) {
         localStorage.setItem("part1Correct", false);
       }
 

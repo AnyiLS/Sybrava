@@ -1,76 +1,97 @@
 $(document).ready(function () {
-  // Sonido
-  function playAudio() {
-    document.getElementById("audio").play();
-  }
-
-  function playAudio1() {
-    document.getElementById("audio1").play();
-  }
-
-  function playAudio2() {
-    document.getElementById("audio2").play();
+  // Audio functions
+  function playAudio(id) {
+    document.getElementById(id).play();
   }
 
   // Dimensiones
-  var htmlancho;
-  var htmlalto;
-  var bodyancho;
-  var bodyalto;
-  var id;
+  let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
 
-  function CambioVentana() {
+  function cambioVentana() {
     htmlancho = $("html").width();
     htmlalto = $("html").height();
     bodyancho = $("body").width();
     bodyalto = $("body").height();
+
     if ($("body").hasClass("alto") && bodyancho > htmlancho) {
       $("body").removeClass("alto").addClass("ancho");
-    }
-    if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
+    } else if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
       $("body").removeClass("ancho").addClass("alto");
     }
   }
 
-  $(window).resize(function () {
-    clearTimeout(id);
-    id = setTimeout(CambioVentana, 500);
+  $(window).on("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(cambioVentana, 500);
   });
 
-  // Inicialización al cargar la página
-  CambioVentana();
-});
-
-// Lógica preguntas:
-
-// 1
-
-document.querySelectorAll(".quiz-option").forEach((option) => {
-  option.addEventListener("click", () => {
-    const isCorrect = option.getAttribute("data-correct") === "true";
+  $(".quiz-option").on("click", function () {
+    const $option = $(this);
+    const isCorrect = $option.data("correct") === true;
     const questionNumber = parseInt(
-      option.closest(".quiz-question").getAttribute("data-question"),
+      $option.closest(".quiz-question").data("question"),
       10
     );
 
-    document
-      .querySelectorAll(
-        `.quiz-question[data-question="${questionNumber}"] .quiz-option`
-      )
-      .forEach((opt) => {
-        opt.classList.remove("correct", "incorrect");
-      });
+    $(
+      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
+    ).removeClass("correct incorrect");
 
     if (isCorrect) {
-      option.classList.add("correct");
+      $option.addClass("correct");
       let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = isCorrect ? `${questionNumber}` : "Incorrecto";
+      results[questionNumber - 1] = `${questionNumber}`;
       localStorage.setItem("quizResults", JSON.stringify(results));
+
+      // Store the correctness of the first question
+      if (questionNumber === 3) {
+        localStorage.setItem("part3Correct", true);
+      }
+
+      $("#miPopupCorrect").show();
+
       setTimeout(() => {
-        window.location.href = `./index53.html`;
+        window.location.href = `./index47.html`;
       }, 2000);
     } else {
-      option.classList.add("incorrect");
+      $option.addClass("incorrect");
+
+      // Store the correctness of the first question
+      if (questionNumber === 1) {
+        localStorage.setItem("part3Correct", false);
+      }
+
+      $("#miPopupIncorrect").show();
     }
   });
+
+  // Function to toggle popup visibility
+  function togglePopup(mostrarBtn, cerrarBtn, popup) {
+    if (mostrarBtn) {
+      mostrarBtn.on("click", function () {
+        popup.show();
+      });
+    }
+
+    cerrarBtn.on("click", function () {
+      popup.hide();
+    });
+  }
+
+  // Function to update the score
+  function updateScore(results) {
+    const score = results.filter(Boolean).length;
+    $("#marcador").text(score);
+  }
+
+  // Set up popups
+  togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
+  togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
+
+  // Initialize on page load
+  cambioVentana();
+
+  // Initialize score on page load
+  let results = JSON.parse(localStorage.getItem("quizResults")) || [];
+  updateScore(results);
 });
