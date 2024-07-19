@@ -25,7 +25,7 @@ $(document).ready(function () {
     resizeTimer = setTimeout(cambioVentana, 500);
   });
 
-  $(".quiz-option").on("click", function () {
+  $(".quiz-option2").on("click", function () {
     const $option = $(this);
     const isCorrect = $option.data("correct") === true;
     const questionNumber = parseInt(
@@ -34,7 +34,7 @@ $(document).ready(function () {
     );
 
     $(
-      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
+      `.quiz-question[data-question="${questionNumber}"] .quiz-option2`
     ).removeClass("correct incorrect");
 
     if (isCorrect) {
