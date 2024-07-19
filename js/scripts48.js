@@ -37,14 +37,15 @@ $(document).ready(function () {
       `.quiz-question[data-question="${questionNumber}"] .quiz-option`
     ).removeClass("correct incorrect");
 
+    let results = JSON.parse(localStorage.getItem("quizResults")) || [];
+
     if (isCorrect) {
       $option.addClass("correct");
-      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = `${questionNumber}`;
+      results[questionNumber - 1] = true;
       localStorage.setItem("quizResults", JSON.stringify(results));
 
       // Store the correctness of the first question
-      if (questionNumber === 1) {
+      if (questionNumber === 2) {
         localStorage.setItem("part1Correct", true);
       }
 
@@ -55,9 +56,10 @@ $(document).ready(function () {
       }, 2000);
     } else {
       $option.addClass("incorrect");
+      results[questionNumber - 1] = false;
+      localStorage.setItem("quizResults", JSON.stringify(results));
 
-      // Store the correctness of the first question
-      if (questionNumber === 1) {
+      if (questionNumber === 2) {
         localStorage.setItem("part1Correct", false);
       }
 

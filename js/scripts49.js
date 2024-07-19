@@ -43,7 +43,6 @@ $(document).ready(function () {
       results[questionNumber - 1] = `${questionNumber}`;
       localStorage.setItem("quizResults", JSON.stringify(results));
 
-      // Store the correctness of the first question
       if (questionNumber === 2) {
         localStorage.setItem("part2Correct", true);
       }
@@ -55,8 +54,9 @@ $(document).ready(function () {
       }, 2000);
     } else {
       $option.addClass("incorrect");
+      results[questionNumber - 1] = false;
+      localStorage.setItem("quizResults", JSON.stringify(results));
 
-      // Store the correctness of the first question
       if (questionNumber === 2) {
         localStorage.setItem("part2Correct", false);
       }
@@ -65,7 +65,6 @@ $(document).ready(function () {
     }
   });
 
-  // Function to toggle popup visibility
   function togglePopup(mostrarBtn, cerrarBtn, popup) {
     if (mostrarBtn) {
       mostrarBtn.on("click", function () {
@@ -95,5 +94,3 @@ $(document).ready(function () {
   let results = JSON.parse(localStorage.getItem("quizResults")) || [];
   updateScore(results);
 });
-
-
