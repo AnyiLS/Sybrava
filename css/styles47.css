@@ -167,15 +167,65 @@ body {
   text-align: center;
   position: absolute;
   top: 85%;
-  left: 62.3%;
+  left: 63.3%;
 }
 
 .marcador {
   font-family: "volta-bold", sans-serif;
 }
 
-@media only screen and (width: 1280px) {
+@media (width > 1600px) {
   .puntaje {
-    font-size: 0.1rem;
+    top: 85.3%;
+    left: 63.5%;
+    font-size: 220%;
+  }
+}
+
+@media (width <= 1400px) {
+  .puntaje {
+    top: 85.3%;
+    left: 63%;
+    font-size: 180%;
+  }
+}
+
+@media (width <= 1280px) {
+  .puntaje {
+    top: 85.3%;
+    left: 63%;
+    font-size: 150%;
+  }
+}
+
+@media (width <= 1100px) {
+  .puntaje {
+    top: 85.3%;
+    left: 62%;
+    font-size: 150%;
+  }
+}
+
+@media (width <= 1000px) {
+  .puntaje {
+    top: 85.3%;
+    left: 62%;
+    font-size: 130%;
+  }
+}
+
+@media (width <= 700px) {
+  .puntaje {
+    top: 85.3%;
+    left: 62%;
+    font-size: 100%;
+  }
+}
+
+@media (width <= 600px) {
+  .puntaje {
+    top: 85.3%;
+    left: 62%;
+    font-size: 80%;
   }
 }
