@@ -55,9 +55,8 @@ $(document).ready(function () {
       }, 2000);
     } else {
       $option.addClass("incorrect");
-      results[questionNumber - 1] = false;
-      localStorage.setItem("quizResults", JSON.stringify(results));
 
+      // Store the correctness of the first question
       if (questionNumber === 6) {
         localStorage.setItem("part6Correct", false);
       }

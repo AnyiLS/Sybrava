@@ -39,26 +39,19 @@ $(document).ready(function () {
 
     if (isCorrect) {
       $option.addClass("correct");
-    } else {
-      $option.addClass("incorrect");
-    }
+      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
+      results[questionNumber - 1] = `${questionNumber}`;
+      localStorage.setItem("quizResults", JSON.stringify(results));
 
-    let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-    results[questionNumber - 1] = true; // Marca la pregunta como respondida
-    localStorage.setItem("quizResults", JSON.stringify(results));
+      updateScore(results);
 
-    updateScore(results);
-
-    if (results.filter(Boolean).length === 9) {
-      localStorage.setItem("allQuestionsAnswered", "true");
-    }
-
-    if (isCorrect) {
       $("#miPopupCorrect").show();
+
       setTimeout(() => {
         window.location.href = `./index49.html`;
       }, 2000);
     } else {
+      $option.addClass("incorrect");
       $("#miPopupIncorrect").show();
     }
   });
@@ -176,13 +169,4 @@ $(document).ready(function () {
       transform: "rotate(-1.3deg)",
     });
   }
-
-  // Deshabilitar los enlaces si la pregunta ya fue respondida
-  $(".quiz-link").each(function () {
-    const questionNumber = $(this).data("question");
-    if (results[questionNumber - 1]) {
-      $(this).css("pointer-events", "none");
-      $(this).css("opacity", "0.5");
-    }
-  });
 });

@@ -25,7 +25,7 @@ $(document).ready(function () {
     resizeTimer = setTimeout(cambioVentana, 500);
   });
 
-  $(".quiz-option2").on("click", function () {
+  $(".quiz-option").on("click", function () {
     const $option = $(this);
     const isCorrect = $option.data("correct") === true;
     const questionNumber = parseInt(
@@ -34,7 +34,7 @@ $(document).ready(function () {
     );
 
     $(
-      `.quiz-question[data-question="${questionNumber}"] .quiz-option2`
+      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
     ).removeClass("correct incorrect");
 
     if (isCorrect) {
@@ -55,9 +55,8 @@ $(document).ready(function () {
       }, 2000);
     } else {
       $option.addClass("incorrect");
-      results[questionNumber - 1] = false;
-      localStorage.setItem("quizResults", JSON.stringify(results));
 
+      // Store the correctness of the first question
       if (questionNumber === 7) {
         localStorage.setItem("part7Correct", false);
       }
