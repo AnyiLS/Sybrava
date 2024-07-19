@@ -52,7 +52,7 @@ $(document).ready(function () {
 
       setTimeout(() => {
         window.location.href = `./index47.html`;
-      }, 2000);
+      }, 200000);
     } else {
       $option.addClass("incorrect");
 
