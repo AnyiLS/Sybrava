@@ -169,4 +169,13 @@ $(document).ready(function () {
       transform: "rotate(-1.3deg)",
     });
   }
+
+  // Deshabilitar los enlaces si la pregunta ya fue respondida
+  $(".quiz-link").each(function () {
+    const questionNumber = $(this).data("question");
+    if (results.includes(`${questionNumber}`)) {
+      $(this).css("pointer-events", "none");
+      $(this).css("opacity", "0.5");
+    }
+  });
 });
