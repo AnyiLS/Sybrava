@@ -1,10 +1,4 @@
 $(document).ready(function () {
-  // Audio functions
-  function playAudio(id) {
-    document.getElementById(id).play();
-  }
-
-  // Dimensiones
   let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
 
   function cambioVentana() {
@@ -152,21 +146,21 @@ $(document).ready(function () {
 
   const part8Correct = localStorage.getItem("part8Correct") === "true";
   if (part8Correct) {
-    $("#parte8").css({
-      scale: "1.1",
-      top: "45.1%",
-      left: "62%",
-      transform: "rotate(1.6deg)",
+    $("#parte9").css({
+      scale: "0.95",
+      top: "63.1%",
+      left: "63.7%",
+      transform: "rotate(-1.3deg)",
     });
   }
 
   const part9Correct = localStorage.getItem("part9Correct") === "true";
   if (part9Correct) {
     $("#parte9").css({
-      scale: "0.95",
-      top: "63.1%",
-      left: "63.7%",
-      transform: "rotate(-1.3deg)",
+      scale: "1.1",
+      top: "45.1%",
+      left: "62%",
+      transform: "rotate(1.6deg)",
     });
   }
 });

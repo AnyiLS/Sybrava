@@ -66,12 +66,12 @@ body {
   background-image: url(../imagenes/body.webp);
 }
 
-.portadaresults {
+.failedresults {
   position: absolute;
   background-size: cover;
   width: 100%;
   height: 100%;
-  background-image: url(../imagenes/body.webp);
+  background-image: url(../imagenes/portada57.webp);
 }
 
 .parte1 {

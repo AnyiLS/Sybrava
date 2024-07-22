@@ -1,10 +1,4 @@
 $(document).ready(function () {
-  // Audio functions
-  function playAudio(id) {
-    document.getElementById(id).play();
-  }
-
-  // Dimensiones
   let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
 
   function cambioVentana() {
@@ -43,20 +37,14 @@ $(document).ready(function () {
       results[questionNumber - 1] = `${questionNumber}`;
       localStorage.setItem("quizResults", JSON.stringify(results));
 
-      // Store the correctness of the first question
       if (questionNumber === 4) {
         localStorage.setItem("part4Correct", true);
       }
 
       $("#miPopupCorrect").show();
-
-      setTimeout(() => {
-        window.location.href = `./index47.html`;
-      }, 2000);
     } else {
       $option.addClass("incorrect");
 
-      // Store the correctness of the first question
       if (questionNumber === 4) {
         localStorage.setItem("part4Correct", false);
       }
@@ -65,7 +53,6 @@ $(document).ready(function () {
     }
   });
 
-  // Function to toggle popup visibility
   function togglePopup(mostrarBtn, cerrarBtn, popup) {
     if (mostrarBtn) {
       mostrarBtn.on("click", function () {
@@ -78,7 +65,6 @@ $(document).ready(function () {
     });
   }
 
-  // Function to update the score
   function updateScore(results) {
     const score = results.filter(Boolean).length;
     $("#marcador").text(score);
@@ -88,10 +74,8 @@ $(document).ready(function () {
   togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
   togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
 
-  // Initialize on page load
   cambioVentana();
 
-  // Initialize score on page load
   let results = JSON.parse(localStorage.getItem("quizResults")) || [];
   updateScore(results);
 });

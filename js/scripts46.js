@@ -1,23 +1,5 @@
 $(document).ready(function () {
-  // Sonido
-  function playAudio() {
-    document.getElementById("audio").play();
-  }
-
-  function playAudio1() {
-    document.getElementById("audio1").play();
-  }
-
-  function playAudio2() {
-    document.getElementById("audio2").play();
-  }
-
-  // Dimensiones
-  var htmlancho;
-  var htmlalto;
-  var bodyancho;
-  var bodyalto;
-  var id;
+  let htmlancho, htmlalto, bodyancho, bodyalto, id;
 
   function CambioVentana() {
     htmlancho = $("html").width();
@@ -37,6 +19,5 @@ $(document).ready(function () {
     id = setTimeout(CambioVentana, 500);
   });
 
-  // Inicialización al cargar la página
   CambioVentana();
 });
