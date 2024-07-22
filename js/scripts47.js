@@ -137,10 +137,10 @@ $(document).ready(function () {
   const part7Correct = localStorage.getItem("part7Correct") === "true";
   if (part7Correct) {
     $("#parte7").css({
-      scale: ".98",
-      top: "41.3%",
-      left: "60.9%",
-      transform: "rotate(-3.3deg)",
+      scale: "0.98",
+      top: "42.4%",
+      left: "60.8%",
+      transform: "rotate(5.3deg)",
     });
   }
 
