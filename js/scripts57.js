@@ -115,59 +115,59 @@ $(document).ready(function () {
   const part4Correct = localStorage.getItem("part4Correct") === "true";
   if (part4Correct) {
     $("#parte4").css({
-      scale: "0.95",
-      top: "47.7%",
-      left: "64.4%",
-      transform: "rotate(-49.2deg)",
+      scale: "1.7",
+      top: "36.4%",
+      left: "19.4%",
+      transform: "rotate(-47.7deg)",
     });
   }
 
   const part5Correct = localStorage.getItem("part5Correct") === "true";
   if (part5Correct) {
     $("#parte5").css({
-      scale: "1",
-      top: "38.1%",
-      left: "67.3%",
-      transform: "rotate(-31deg)",
+      scale: "1.75",
+      top: "17.3%",
+      left: "20.6%",
+      transform: "rotate(-28.5deg)",
     });
   }
 
   const part6Correct = localStorage.getItem("part6Correct") === "true";
   if (part6Correct) {
     $("#parte6").css({
-      scale: ".8",
-      top: "44.6%",
-      left: "63.7%",
-      transform: "rotate(-5deg)",
+      scale: "1.50",
+      top: "23.5%",
+      left: "13.9%",
+      transform: "rotate(-0.9deg)",
     });
   }
 
   const part7Correct = localStorage.getItem("part7Correct") === "true";
   if (part7Correct) {
     $("#parte7").css({
-      scale: ".98",
-      top: "41.3%",
-      left: "60.9%",
-      transform: "rotate(-3.3deg)",
+      scale: "1.75",
+      top: "23.9%",
+      left: "11.9%",
+      transform: "rotate(4.5deg)",
     });
   }
 
   const part8Correct = localStorage.getItem("part8Correct") === "true";
   if (part8Correct) {
     $("#parte8").css({
-      scale: "1.1",
-      top: "45.1%",
-      left: "62%",
-      transform: "rotate(1.6deg)",
+      scale: "1.68",
+      top: "23%",
+      left: "14.2%",
+      transform: "rotate(-0.6deg)",
     });
   }
 
   const part9Correct = localStorage.getItem("part9Correct") === "true";
   if (part9Correct) {
     $("#parte9").css({
-      scale: "0.95",
-      top: "63.1%",
-      left: "63.7%",
+      scale: "1.55",
+      top: "54.7%",
+      left: "13.6%",
       transform: "rotate(-1.3deg)",
     });
   }
