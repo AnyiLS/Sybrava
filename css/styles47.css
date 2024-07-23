@@ -229,32 +229,3 @@ body {
     font-size: 80%;
   }
 }
-
-.calificacion {
-  top: 82.9%;
-  left: 17%;
-  position: absolute;
-  font-size: 257%;
-  color: #021f69;
-  font-family: "volta-modern", sans-serif;
-}
-
-@media (max-width: 1320px) {
-  .calificacion {
-    top: 82.9%;
-    left: 17%;
-    position: absolute;
-    font-size: 227%;
-    color: #021f69;
-  }
-}
-
-@media (max-width: 1165px) {
-  .calificacion {
-    top: 82.9%;
-    left: 18.5%;
-    position: absolute;
-    font-size: 200%;
-    color: #021f69;
-  }
-}

@@ -107,21 +107,16 @@ $(document).ready(function () {
     let message = "";
 
     if (score === 9) {
-      message = `<b>¡Felicitaciones, completaste el 100 % del corazón!</b>`;
       redirectTo("/index57.html");
     } else if (score === 8) {
-      message = `<b>¡Felicitaciones, completaste el 90 % del corazón!</b>`;
       redirectTo("./index57.html");
     } else if (score === 7) {
-      message = `<b>¡Felicitaciones, completaste el 80 % del corazón!</b>`;
-/*       redirectTo("./index57.html"); */
+      /*       redirectTo("./index57.html"); */
     } else {
       if (attempts >= MAX_ATTEMPTS) {
         localStorage.setItem("blockTime", new Date().toISOString());
-        message = `<b>¡Casi lo logras!</b> Revisita tus materiales y vuelve a intentarlo. Seguro podrás hacerlo.`;
+
         redirectTo("./index57.html");
-      } else {
-        message = `<b>¡Casi lo logras!</b> Revisita tus materiales y vuelve a intentarlo. Seguro podrás hacerlo.`;
       }
     }
 
@@ -142,8 +137,5 @@ $(document).ready(function () {
       window.location.href = url;
     }, 2000);
   }
-
-  handleFinishAttempt();
-
   init();
 });
