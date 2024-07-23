@@ -1,11 +1,11 @@
 $(document).ready(function () {
-  let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
+  let resizeTimer;
 
-  function cambioVentana() {
-    htmlancho = $("html").width();
-    htmlalto = $("html").height();
-    bodyancho = $("body").width();
-    bodyalto = $("body").height();
+  function adjustBodyClass() {
+    const htmlancho = $("html").width();
+    const htmlalto = $("html").height();
+    const bodyancho = $("body").width();
+    const bodyalto = $("body").height();
 
     if ($("body").hasClass("alto") && bodyancho > htmlancho) {
       $("body").removeClass("alto").addClass("ancho");
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
   $(window).on("resize", function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(cambioVentana, 500);
+    resizeTimer = setTimeout(adjustBodyClass, 500);
   });
 
   $(".quiz-option").on("click", function () {
@@ -33,48 +33,58 @@ $(document).ready(function () {
 
     if (isCorrect) {
       $option.addClass("correct");
-      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = `${questionNumber}`;
-      localStorage.setItem("quizResults", JSON.stringify(results));
-
-      if (questionNumber === 1) {
-        localStorage.setItem("part1Correct", true);
-      }
-
+      localStorage.setItem(`part${questionNumber}Correct`, "true");
       $("#miPopupCorrect").show();
     } else {
       $option.addClass("incorrect");
-
-      if (questionNumber === 1) {
-        localStorage.setItem("part1Correct", false);
-      }
-
+      localStorage.setItem(`part${questionNumber}Correct`, "false");
       $("#miPopupIncorrect").show();
     }
+
+    console.log(
+      `Part ${questionNumber} marked as ${isCorrect ? "correct" : "incorrect"}`
+    );
+    updateScore();
   });
 
-  function togglePopup(mostrarBtn, cerrarBtn, popup) {
-    if (mostrarBtn) {
-      mostrarBtn.on("click", function () {
-        popup.show();
-      });
-    }
-
+  function togglePopup(cerrarBtn, popup) {
     cerrarBtn.on("click", function () {
       popup.hide();
     });
   }
 
-  function updateScore(results) {
-    const score = results.filter(Boolean).length;
+  function updateScore() {
+    let score = 0;
+    for (let i = 1; i <= 9; i++) {
+      if (localStorage.getItem(`part${i}Correct`) === "true") {
+        score++;
+      }
+    }
     $("#marcador").text(score);
+    console.log(`Puntuación actual: ${score}`);
+    return score;
   }
 
-  togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
-  togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
+  togglePopup($("#cerrarPopupCorrect"), $("#miPopupCorrect"));
+  togglePopup($("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
 
-  cambioVentana();
+  adjustBodyClass();
+  updateScore();
 
-  let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-  updateScore(results);
+  function checkResults() {
+    const score = updateScore();
+
+    if (score === 9) {
+      console.log("serás redirigido porque sacaste 9");
+      window.location.href = "/index57.html";
+    } else if (score >= 7 && score <= 8) {
+      console.log("redirección por sacar más de 7");
+      window.location.href = "./index46.html";
+    } else if (score < 7) {
+      console.log("sacaste menos de 7");
+      // window.location.href = "./index50.html";
+    }
+  }
+
+  checkResults();
 });

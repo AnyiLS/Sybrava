@@ -1,25 +1,6 @@
 $(document).ready(function () {
-  let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
-
-  function cambioVentana() {
-    htmlancho = $("html").width();
-    htmlalto = $("html").height();
-    bodyancho = $("body").width();
-    bodyalto = $("body").height();
-
-    if ($("body").hasClass("alto") && bodyancho > htmlancho) {
-      $("body").removeClass("alto").addClass("ancho");
-    } else if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
-      $("body").removeClass("ancho").addClass("alto");
-    }
-  }
-
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(cambioVentana, 500);
-  });
-
   $(".quiz-option").on("click", function () {
+    console.log("Quiz option clicked");
     const $option = $(this);
     const isCorrect = $option.data("correct") === true;
     const questionNumber = parseInt(
@@ -33,134 +14,109 @@ $(document).ready(function () {
 
     if (isCorrect) {
       $option.addClass("correct");
-      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = `${questionNumber}`;
-      localStorage.setItem("quizResults", JSON.stringify(results));
-
-      updateScore(results);
-
+      localStorage.setItem(`part${questionNumber}Correct`, "true");
       $("#miPopupCorrect").show();
-
-      setTimeout(() => {
-        window.location.href = `./index49.html`;
-      }, 2000);
+      console.log(`Part ${questionNumber} marked as correct`);
     } else {
       $option.addClass("incorrect");
+      localStorage.setItem(`part${questionNumber}Correct`, "false");
       $("#miPopupIncorrect").show();
+      console.log(`Part ${questionNumber} marked as incorrect`);
     }
+
+    for (let i = 1; i <= 9; i++) {
+      const partState = localStorage.getItem(`part${i}Correct`);
+      console.log(`Part ${i} state: ${partState}`);
+    }
+
+    updateScore();
   });
 
-  function togglePopup(mostrarBtn, cerrarBtn, popup) {
-    if (mostrarBtn) {
-      mostrarBtn.on("click", function () {
-        popup.show();
-      });
+  for (let i = 1; i <= 9; i++) {
+    const partCorrect = localStorage.getItem(`part${i}Correct`);
+    console.log(`La parte ${i}: tiene valor "${partCorrect}"`);
+
+    if (partCorrect === "true" || partCorrect === "false") {
+      console.log(`Part ${i} is ${partCorrect}`);
+      updatePartPosition(i, partCorrect === "true");
+    } else {
+      console.log(`Parte ${i} sin resolver`);
     }
-
-    cerrarBtn.on("click", function () {
-      popup.hide();
-    });
   }
 
-  function updateScore(results) {
-    const score = results.filter(Boolean).length;
-    $("#marcador").text(score);
+  updateScore();
+});
+
+function updateScore() {
+  let score = 0;
+  for (let i = 1; i <= 9; i++) {
+    if (localStorage.getItem(`part${i}Correct`) === "true") {
+      score++;
+    }
   }
+  $("#marcador").text(score);
+  console.log(`Current score: ${score}`);
+  return score;
+}
 
-  togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
-  togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
-
-  cambioVentana();
-
-  let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-  updateScore(results);
-
-  const part1Correct = localStorage.getItem("part1Correct") === "true";
-  if (part1Correct) {
-    $("#parte1").css({
-      top: "58%",
-      left: "73%",
-      transform: "rotate(-18deg)",
-    });
+function checkResults() {
+  const score = updateScore();
+  
+  if (score === 9) {
+    console.log("serás redirigido porque sacaste 9");
+    window.location.href = "/index57.html";
+  } else if (score >= 7 && score <= 8) {
+    console.log("redirección por sacar más de 7");
+    window.location.href = "./index46.html";
+  } else if (score < 7) {
+    console.log("sacaste menos de 7");
+    // window.location.href = "./index50.html";
   }
+}
 
-  const part2Correct = localStorage.getItem("part2Correct") === "true";
-  if (part2Correct) {
-    $("#parte2").css({
+checkResults();
+
+function updatePartPosition(partNumber, isCorrect) {
+  const positions = {
+    1: { top: "58%", left: "73%", transform: "rotate(-18deg)" },
+    2: {
       scale: "0.95",
       top: "50.8%",
       left: "63.3%",
       transform: "rotate(-139.3deg)",
-    });
-  }
-
-  const part3Correct = localStorage.getItem("part3Correct") === "true";
-  if (part3Correct) {
-    $("#parte3").css({
+    },
+    3: {
       scale: "0.95",
       top: "47.1%",
       left: "64.6%",
       transform: "rotate(-52deg)",
-    });
-  }
-
-  const part4Correct = localStorage.getItem("part4Correct") === "true";
-  if (part4Correct) {
-    $("#parte4").css({
+    },
+    4: {
       scale: "0.95",
       top: "47.7%",
       left: "64.4%",
       transform: "rotate(-49.2deg)",
-    });
-  }
-
-  const part5Correct = localStorage.getItem("part5Correct") === "true";
-  if (part5Correct) {
-    $("#parte5").css({
-      scale: "1",
-      top: "38.1%",
-      left: "67.3%",
-      transform: "rotate(-31deg)",
-    });
-  }
-
-  const part6Correct = localStorage.getItem("part6Correct") === "true";
-  if (part6Correct) {
-    $("#parte6").css({
-      scale: ".8",
-      top: "44.6%",
-      left: "63.7%",
-      transform: "rotate(-5deg)",
-    });
-  }
-
-  const part7Correct = localStorage.getItem("part7Correct") === "true";
-  if (part7Correct) {
-    $("#parte7").css({
+    },
+    5: { scale: "1", top: "38.1%", left: "67.3%", transform: "rotate(-31deg)" },
+    6: { scale: ".8", top: "44.6%", left: "63.7%", transform: "rotate(-5deg)" },
+    7: {
       scale: "0.98",
       top: "42.4%",
       left: "60.8%",
       transform: "rotate(5.3deg)",
-    });
-  }
-
-  const part8Correct = localStorage.getItem("part8Correct") === "true";
-  if (part8Correct) {
-    $("#parte8").css({
-      scale: "0.23",
-      top: "36.3%",
-      left: "58.7%",
+    },
+    8: {
+      scale: "0.9",
+      top: "63.7%",
+      left: "63.8%",
       transform: "rotate(-1.3deg)",
-    });
-  }
+    },
+    9: { scale: "1.1", top: "45.1%", left: "62%", transform: "rotate(1.6deg)" },
+  };
 
-  const part9Correct = localStorage.getItem("part9Correct") === "true";
-  if (part9Correct) {
-    $("#parte9").css({
-      scale: "1.1",
-      top: "45.1%",
-      left: "62%",
-      transform: "rotate(1.6deg)",
-    });
+  if (isCorrect) {
+    $(`#parte${partNumber}`).css(positions[partNumber]);
+  } else {
+    $(`#parte${partNumber}`).addClass("incorrect-answer");
   }
-});
+}
