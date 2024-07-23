@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  const MAX_ATTEMPTS = 4;
-  const BLOCK_DURATION = 24 * 60 * 60 * 1000;
   const partPositions = {
     1: {
       top: "49.1%",
@@ -58,21 +56,17 @@ $(document).ready(function () {
     },
   };
 
-  function init() {
-    const blockTime = localStorage.getItem("blockTime");
-    if (
-      blockTime &&
-      Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
-    ) {
-      displayMessage(
-        "<b>Se han acabado tus intentos</b>, vuelve a intentarlo en 24 horas."
-      );
-      disableQuiz();
-      return;
+  function updatePositions() {
+    for (let i = 1; i <= 9; i++) {
+      const $part = $(`#parte${i}`);
+      const isCorrect = localStorage.getItem(`part${i}Correct`) === "true";
+      if (isCorrect) {
+        $part.css(partPositions[i]);
+      } else {
+        // Instead of hiding, set a default position or style
+        $part.hide();
+      }
     }
-
-    updatePositions();
-    updateScore();
   }
 
   function updateScore() {
@@ -86,56 +80,28 @@ $(document).ready(function () {
     return score;
   }
 
-  function updatePositions() {
-    for (let i = 1; i <= 9; i++) {
-      const $part = $(`#parte${i}`);
-      const isCorrect = localStorage.getItem(`part${i}Correct`) === "true";
-      if (isCorrect) {
-        $part.css(partPositions[i]).show();
-      } else {
-        $part.hide();
-      }
-    }
-  }
-
-  function handleFinishAttempt() {
-    let attempts = parseInt(localStorage.getItem("attempts") || "0");
-    attempts++;
-    localStorage.setItem("attempts", attempts);
-
-    const score = updateScore();
-    let message = "";
-
-    if (score === 9) {
-      redirectTo("/index57.html");
-    } else if (score === 8) {
-      redirectTo("./index57.html");
-    } else if (score === 7) {
-      /*       redirectTo("./index57.html"); */
-    } else {
-      if (attempts >= MAX_ATTEMPTS) {
-        localStorage.setItem("blockTime", new Date().toISOString());
-
-        redirectTo("./index57.html");
-      }
-    }
-
-    displayMessage(message);
-  }
-
-  function disableQuiz() {
-    $("#finishAttemptButton").prop("disabled", true);
-  }
-
-  function displayMessage(message) {
-    console.log("Displaying message:", message); // Agrega esta línea para depuración
-    $("#messageContainer").html(message);
-  }
-
   function redirectTo(url) {
-    setTimeout(() => {
-      window.location.href = url;
-    }, 2000);
+    window.location.href = url;
   }
-  init();
+
+  function scoreRedirect() {
+    let score = updateScore();
+    if (score === 9) {
+      e.preventdefault();
+      redirectTo("./index60.html");
+    } else if (score === 8) {
+      e.preventdefault();
+      redirectTo("./index59.html");
+    } else if (score === 7) {
+      e.preventdefault();
+      redirectTo("./index58.html");
+    } else {
+      e.preventdefault();
+      redirectTo("./index57.html");
+    }
+  }
+
+  updatePositions();
+  updateScore();
+  scoreRedirect();
 });

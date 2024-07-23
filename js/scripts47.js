@@ -7,7 +7,6 @@ $(document).ready(function () {
     blockTime &&
     Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
   ) {
-    alert("Se han acabado tus intentos, vuelve a intentarlo en 24 horas.");
     checkResults(true);
     return;
   }
@@ -32,10 +31,21 @@ $(document).ready(function () {
       $option.addClass("incorrect");
       localStorage.setItem(`part${questionNumber}Correct`, "false");
       $("#miPopupIncorrect").show();
+      incrementAttempts();
     }
 
     updateScore();
   });
+
+  function incrementAttempts() {
+    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+    attempts++;
+    localStorage.setItem("attempts", attempts);
+
+    if (attempts > MAX_ATTEMPTS) {
+      localStorage.setItem("blockTime", new Date().toISOString());
+    }
+  }
 
   for (let i = 1; i <= 9; i++) {
     const partCorrect = localStorage.getItem(`part${i}Correct`);
@@ -59,23 +69,21 @@ $(document).ready(function () {
     return score;
   }
 
-  function checkResults(forceRedirect = false) {
+  function checkResults() {
     const score = updateScore();
 
     if (score === 9) {
-      window.location.href = "/index57.html";
-    } else if (score >= 7 && score <= 8) {
-      window.location.href = "./index46.html";
-    } else if (score < 7) {
-      let attempts = parseInt(localStorage.getItem("attempts")) || 0;
-      attempts++;
-      localStorage.setItem("attempts", attempts);
-
-      if (attempts > MAX_ATTEMPTS || forceRedirect) {
-        localStorage.setItem("blockTime", new Date().toISOString());
-        alert("Se han acabado tus intentos, vuelve a intentarlo en 24 horas.");
-        window.location.href = "./index50.html";
-      }
+      e.preventdefault();
+      redirectTo("./index60.html");
+    } else if (score === 8) {
+      e.preventdefault();
+      redirectTo("./index59.html");
+    } else if (score === 7) {
+      e.preventdefault();
+      redirectTo("./index58.html");
+    } else {
+      e.preventdefault();
+      redirectTo("./index57.html");
     }
   }
 
@@ -85,14 +93,9 @@ $(document).ready(function () {
     let attempts = parseInt(localStorage.getItem("attempts")) || 0;
     if (attempts <= MAX_ATTEMPTS) {
       checkResults();
-    } else {
-      displayMessage(
-        "<b>Se han acabado tus intentos</b>, vuelve a intentarlo en 24 horas."
-      );
     }
   }
 
-  // Añade lógica para manejar clic en el botón de finalizar intento
   $("#finishAttemptButton").on("click", function () {
     handleFinishAttempt();
   });
