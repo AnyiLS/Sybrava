@@ -58,6 +58,18 @@ body {
   background-size: cover;
 }
 
+.Next {
+  width: 8.9%;
+  height: 15%;
+  position: absolute;
+  border-radius: 100%;
+  top: 78.3%;
+  left: 81.4%;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
 .portada {
   position: absolute;
   background-size: cover;
@@ -96,6 +108,22 @@ body {
   width: 100%;
   height: 100%;
   background-image: url(../imagenes/portada60.webp);
+}
+
+.parts {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imagenes/portada61.webp);
+}
+
+.referencias {
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imagenes/portada62.webp);
 }
 
 .parte1 {
@@ -206,7 +234,7 @@ body {
   }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1300px) {
   .puntaje {
     top: 85.3%;
     left: 63%;
