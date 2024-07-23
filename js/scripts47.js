@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const MAX_ATTEMPTS = 3;
+  const MAX_ATTEMPTS = 4;
   const BLOCK_DURATION = 24 * 60 * 60 * 1000;
 
   const blockTime = localStorage.getItem("blockTime");
@@ -80,6 +80,22 @@ $(document).ready(function () {
   }
 
   checkResults();
+
+  function handleFinishAttempt() {
+    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+    if (attempts <= MAX_ATTEMPTS) {
+      checkResults();
+    } else {
+      displayMessage(
+        "<b>Se han acabado tus intentos</b>, vuelve a intentarlo en 24 horas."
+      );
+    }
+  }
+
+  // Añade lógica para manejar clic en el botón de finalizar intento
+  $("#finishAttemptButton").on("click", function () {
+    handleFinishAttempt();
+  });
 
   function updatePartPosition(partNumber, isCorrect) {
     const positions = {

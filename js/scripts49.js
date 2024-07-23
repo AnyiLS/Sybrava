@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  const MAX_ATTEMPTS = 4;
+  const BLOCK_DURATION = 24 * 60 * 60 * 1000;
   const partPositions = {
     1: {
       top: "49.1%",
@@ -56,16 +58,21 @@ $(document).ready(function () {
     },
   };
 
-  function updatePositions() {
-    for (let i = 1; i <= 9; i++) {
-      const $part = $(`#parte${i}`);
-      const isCorrect = localStorage.getItem(`part${i}Correct`) === "true";
-      if (isCorrect) {
-        $part.css(partPositions[i]);
-      } else {
-        $part.hide();
-      }
+  function init() {
+    const blockTime = localStorage.getItem("blockTime");
+    if (
+      blockTime &&
+      Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
+    ) {
+      displayMessage(
+        "<b>Se han acabado tus intentos</b>, vuelve a intentarlo en 24 horas."
+      );
+      disableQuiz();
+      return;
     }
+
+    updatePositions();
+    updateScore();
   }
 
   function updateScore() {
@@ -79,6 +86,64 @@ $(document).ready(function () {
     return score;
   }
 
-  updatePositions();
-  updateScore();
+  function updatePositions() {
+    for (let i = 1; i <= 9; i++) {
+      const $part = $(`#parte${i}`);
+      const isCorrect = localStorage.getItem(`part${i}Correct`) === "true";
+      if (isCorrect) {
+        $part.css(partPositions[i]).show();
+      } else {
+        $part.hide();
+      }
+    }
+  }
+
+  function handleFinishAttempt() {
+    let attempts = parseInt(localStorage.getItem("attempts") || "0");
+    attempts++;
+    localStorage.setItem("attempts", attempts);
+
+    const score = updateScore();
+    let message = "";
+
+    if (score === 9) {
+      message = `<b>¡Felicitaciones, completaste el 100 % del corazón!</b>`;
+      redirectTo("/index57.html");
+    } else if (score === 8) {
+      message = `<b>¡Felicitaciones, completaste el 90 % del corazón!</b>`;
+      redirectTo("./index57.html");
+    } else if (score === 7) {
+      message = `<b>¡Felicitaciones, completaste el 80 % del corazón!</b>`;
+/*       redirectTo("./index57.html"); */
+    } else {
+      if (attempts >= MAX_ATTEMPTS) {
+        localStorage.setItem("blockTime", new Date().toISOString());
+        message = `<b>¡Casi lo logras!</b> Revisita tus materiales y vuelve a intentarlo. Seguro podrás hacerlo.`;
+        redirectTo("./index57.html");
+      } else {
+        message = `<b>¡Casi lo logras!</b> Revisita tus materiales y vuelve a intentarlo. Seguro podrás hacerlo.`;
+      }
+    }
+
+    displayMessage(message);
+  }
+
+  function disableQuiz() {
+    $("#finishAttemptButton").prop("disabled", true);
+  }
+
+  function displayMessage(message) {
+    console.log("Displaying message:", message); // Agrega esta línea para depuración
+    $("#messageContainer").html(message);
+  }
+
+  function redirectTo(url) {
+    setTimeout(() => {
+      window.location.href = url;
+    }, 2000);
+  }
+
+  handleFinishAttempt();
+
+  init();
 });

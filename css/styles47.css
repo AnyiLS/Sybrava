@@ -18,9 +18,9 @@ html {
 .ancho {
   position: absolute;
   width: 100vw;
-  height: 56.25vw; /* 16:9 aspect ratio */
+  height: 56.25vw;
   max-height: 100vh;
-  max-width: 177.78vh; /* 16:9 aspect ratio */
+  max-width: 177.78vh;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -66,7 +66,7 @@ body {
   background-image: url(../imagenes/body.webp);
 }
 
-.failedresults {
+.results {
   position: absolute;
   background-size: cover;
   width: 100%;
@@ -160,6 +160,10 @@ body {
   font-style: normal;
 }
 
+.marcador {
+  font-family: "volta-bold", sans-serif;
+}
+
 .puntaje {
   font-family: "volta-modern", sans-serif;
   font-size: 210%;
@@ -170,11 +174,7 @@ body {
   left: 63.3%;
 }
 
-.marcador {
-  font-family: "volta-bold", sans-serif;
-}
-
-@media (width > 1600px) {
+@media (min-width: 1600px) {
   .puntaje {
     top: 85.3%;
     left: 63.5%;
@@ -182,7 +182,7 @@ body {
   }
 }
 
-@media (width <= 1400px) {
+@media (max-width: 1400px) {
   .puntaje {
     top: 85.3%;
     left: 63%;
@@ -190,7 +190,7 @@ body {
   }
 }
 
-@media (width <= 1280px) {
+@media (max-width: 1280px) {
   .puntaje {
     top: 85.3%;
     left: 63%;
@@ -198,7 +198,7 @@ body {
   }
 }
 
-@media (width <= 1100px) {
+@media (max-width: 1100px) {
   .puntaje {
     top: 85.3%;
     left: 62%;
@@ -206,7 +206,7 @@ body {
   }
 }
 
-@media (width <= 1000px) {
+@media (max-width: 1000px) {
   .puntaje {
     top: 85.3%;
     left: 62%;
@@ -214,7 +214,7 @@ body {
   }
 }
 
-@media (width <= 700px) {
+@media (max-width: 700px) {
   .puntaje {
     top: 85.3%;
     left: 62%;
@@ -222,10 +222,39 @@ body {
   }
 }
 
-@media (width <= 600px) {
+@media (max-width: 600px) {
   .puntaje {
     top: 85.3%;
     left: 62%;
     font-size: 80%;
+  }
+}
+
+.calificacion {
+  top: 82.9%;
+  left: 17%;
+  position: absolute;
+  font-size: 257%;
+  color: #021f69;
+  font-family: "volta-modern", sans-serif;
+}
+
+@media (max-width: 1320px) {
+  .calificacion {
+    top: 82.9%;
+    left: 17%;
+    position: absolute;
+    font-size: 227%;
+    color: #021f69;
+  }
+}
+
+@media (max-width: 1165px) {
+  .calificacion {
+    top: 82.9%;
+    left: 18.5%;
+    position: absolute;
+    font-size: 200%;
+    color: #021f69;
   }
 }
