@@ -1,80 +1,84 @@
 $(document).ready(function () {
-  let htmlancho, htmlalto, bodyancho, bodyalto, resizeTimer;
+  const partPositions = {
+    1: {
+      top: "49.1%",
+      left: "31%",
+      transform: "rotate(-17.4deg)",
+      scale: "1.58",
+    },
+    2: {
+      top: "37.9%",
+      left: "18.3%",
+      transform: "rotate(-139.3deg)",
+      scale: "1.58",
+    },
+    3: {
+      top: "34.6%",
+      left: "19.8%",
+      transform: "rotate(-49.2deg)",
+      scale: "1.58",
+    },
+    4: {
+      top: "36.4%",
+      left: "19.4%",
+      transform: "rotate(-47.7deg)",
+      scale: "1.7",
+    },
+    5: {
+      top: "17.3%",
+      left: "20.6%",
+      transform: "rotate(-28.5deg)",
+      scale: "1.75",
+    },
+    6: {
+      top: "23.5%",
+      left: "13.9%",
+      transform: "rotate(-0.9deg)",
+      scale: "1.50",
+    },
+    7: {
+      top: "23.9%",
+      left: "11.9%",
+      transform: "rotate(4.5deg)",
+      scale: "1.75",
+    },
+    8: {
+      top: "23%",
+      left: "14.2%",
+      transform: "rotate(-0.6deg)",
+      scale: "1.68",
+    },
+    9: {
+      top: "54.7%",
+      left: "13.6%",
+      transform: "rotate(-1.3deg)",
+      scale: "1.55",
+    },
+  };
 
-  function cambioVentana() {
-    htmlancho = $("html").width();
-    htmlalto = $("html").height();
-    bodyancho = $("body").width();
-    bodyalto = $("body").height();
-
-    if ($("body").hasClass("alto") && bodyancho > htmlancho) {
-      $("body").removeClass("alto").addClass("ancho");
-    } else if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
-      $("body").removeClass("ancho").addClass("alto");
+  function updatePositions() {
+    for (let i = 1; i <= 9; i++) {
+      const $part = $(`#parte${i}`);
+      const isCorrect = localStorage.getItem(`part${i}Correct`) === "true";
+      if (isCorrect) {
+        $part.css(partPositions[i]);
+      } else {
+        $part.hide();
+      }
     }
   }
 
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(cambioVentana, 500);
-  });
-
-  $(".quiz-option").on("click", function () {
-    const $option = $(this);
-    const isCorrect = $option.data("correct") === true;
-    const questionNumber = parseInt(
-      $option.closest(".quiz-question").data("question"),
-      10
-    );
-
-    $(
-      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
-    ).removeClass("correct incorrect");
-
-    if (isCorrect) {
-      $option.addClass("correct");
-      let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-      results[questionNumber - 1] = `${questionNumber}`;
-      localStorage.setItem("quizResults", JSON.stringify(results));
-
-      if (questionNumber === 2) {
-        localStorage.setItem("part2Correct", true);
+  function updateScore() {
+    let score = 0;
+    for (let i = 1; i <= 9; i++) {
+      if (localStorage.getItem(`part${i}Correct`) === "true") {
+        score++;
       }
-
-      $("#miPopupCorrect").show();
-    } else {
-      $option.addClass("incorrect");
-
-      if (questionNumber === 2) {
-        localStorage.setItem("part2Correct", false);
-      }
-
-      $("#miPopupIncorrect").show();
     }
-  });
-
-  function togglePopup(mostrarBtn, cerrarBtn, popup) {
-    if (mostrarBtn) {
-      mostrarBtn.on("click", function () {
-        popup.show();
-      });
-    }
-
-    cerrarBtn.on("click", function () {
-      popup.hide();
-    });
-  }
-
-  function updateScore(results) {
-    const score = results.filter(Boolean).length;
     $("#marcador").text(score);
+    return score;
   }
 
-  togglePopup(null, $("#cerrarPopupCorrect"), $("#miPopupCorrect"));
-  togglePopup(null, $("#cerrarPopupIncorrect"), $("#miPopupIncorrect"));
-
-  cambioVentana();
-
-  let results = JSON.parse(localStorage.getItem("quizResults")) || [];
-  updateScore(results);
+  updatePositions();
+  updateScore();
 });

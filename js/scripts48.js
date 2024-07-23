@@ -1,23 +1,16 @@
 $(document).ready(function () {
-  let resizeTimer;
+  const MAX_ATTEMPTS = 3;
+  const BLOCK_DURATION = 24 * 60 * 60 * 1000;
 
-  function adjustBodyClass() {
-    const htmlancho = $("html").width();
-    const htmlalto = $("html").height();
-    const bodyancho = $("body").width();
-    const bodyalto = $("body").height();
-
-    if ($("body").hasClass("alto") && bodyancho > htmlancho) {
-      $("body").removeClass("alto").addClass("ancho");
-    } else if ($("body").hasClass("ancho") && bodyalto > htmlalto) {
-      $("body").removeClass("ancho").addClass("alto");
-    }
+  const blockTime = localStorage.getItem("blockTime");
+  if (
+    blockTime &&
+    Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
+  ) {
+    alert("Se han acabado tus intentos, vuelve a intentarlo en 24 horas.");
+    checkResults(true);
+    return;
   }
-
-  $(window).on("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(adjustBodyClass, 500);
-  });
 
   $(".quiz-option").on("click", function () {
     const $option = $(this);
@@ -41,9 +34,6 @@ $(document).ready(function () {
       $("#miPopupIncorrect").show();
     }
 
-    console.log(
-      `Part ${questionNumber} marked as ${isCorrect ? "correct" : "incorrect"}`
-    );
     updateScore();
   });
 
@@ -61,7 +51,7 @@ $(document).ready(function () {
       }
     }
     $("#marcador").text(score);
-    console.log(`Puntuación actual: ${score}`);
+
     return score;
   }
 
@@ -71,18 +61,23 @@ $(document).ready(function () {
   adjustBodyClass();
   updateScore();
 
-  function checkResults() {
+  function checkResults(forceRedirect = false) {
     const score = updateScore();
 
     if (score === 9) {
-      console.log("serás redirigido porque sacaste 9");
       window.location.href = "/index57.html";
     } else if (score >= 7 && score <= 8) {
-      console.log("redirección por sacar más de 7");
       window.location.href = "./index46.html";
     } else if (score < 7) {
-      console.log("sacaste menos de 7");
-      // window.location.href = "./index50.html";
+      let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+      attempts++;
+      localStorage.setItem("attempts", attempts);
+
+      if (attempts > MAX_ATTEMPTS || forceRedirect) {
+        localStorage.setItem("blockTime", new Date().toISOString());
+        alert("Se han acabado tus intentos, vuelve a intentarlo en 24 horas.");
+        window.location.href = "./index50.html";
+      }
     }
   }
 
