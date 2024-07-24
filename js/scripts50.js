@@ -32,22 +32,22 @@ $(document).ready(function () {
       transform: "rotate(-5deg)",
     },
     7: {
-      scale: "0.98",
+      scale: "1.08",
       top: "42.4%",
       left: "60.8%",
       transform: "rotate(5.3deg)",
     },
     8: {
+      scale: "0.99",
+      top: "44.1%",
+      left: "62%",
+      transform: " rotate(1.6deg)",
+    },
+    9: {
       scale: "0.9",
       top: "63.7%",
       left: "63.8%",
       transform: "rotate(-1.3deg)",
-    },
-    9: {
-      scale: "1.1",
-      top: "45.1%",
-      left: "62%",
-      transform: "rotate(1.6deg)",
     },
   };
 
@@ -58,30 +58,33 @@ $(document).ready(function () {
       if (isCorrect) {
         $part.css(partPositions[i]);
       } else {
-        // Instead of hiding, set a default position or style
         $part.hide();
       }
     }
   }
 
-  function scoreRedirect() {
-    let score = updateScore();
-    if (score === 9) {
-      e.preventdefault();
-      redirectTo("./index60.html");
-    } else if (score === 8) {
-      e.preventdefault();
-      redirectTo("./index59.html");
-    } else if (score === 7) {
-      e.preventdefault();
-      redirectTo("./index58.html");
-    } else {
-      e.preventdefault();
-      redirectTo("./index57.html");
+  function updateScore() {
+    let score = 0;
+    for (let i = 1; i <= 9; i++) {
+      if (localStorage.getItem(`part${i}Correct`) === "true") {
+        score++;
+      }
     }
+    $("#marcador").text(score);
+    return score;
   }
+
+
+  $(".hover-target").hover(
+    function () {
+      $(this).siblings(".tooltip").show();
+    },
+    function () {
+      $(this).siblings(".tooltip").hide();
+    }
+  );
 
   updatePositions();
   updateScore();
-  scoreRedirect();
+
 });

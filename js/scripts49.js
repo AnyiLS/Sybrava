@@ -84,22 +84,6 @@ $(document).ready(function () {
     window.location.href = url;
   }
 
-  function scoreRedirect() {
-    let score = updateScore();
-    if (score === 9) {
-      e.preventdefault();
-      redirectTo("./index60.html");
-    } else if (score === 8) {
-      e.preventdefault();
-      redirectTo("./index59.html");
-    } else if (score === 7) {
-      e.preventdefault();
-      redirectTo("./index58.html");
-    } else {
-      e.preventdefault();
-      redirectTo("./index57.html");
-    }
-  }
 
   updatePositions();
   updateScore();

@@ -69,7 +69,7 @@ $(document).ready(function () {
     return score;
   }
 
-  function checkResults() {
+  function checkResults(event) {
     const score = updateScore();
 
     if (score === 9) {
