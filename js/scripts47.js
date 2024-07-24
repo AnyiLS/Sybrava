@@ -73,16 +73,16 @@ $(document).ready(function () {
     const score = updateScore();
 
     if (score === 9) {
-      e.preventdefault();
+      event.preventDefault();
       redirectTo("./index60.html");
     } else if (score === 8) {
-      e.preventdefault();
+      event.preventDefault();
       redirectTo("./index59.html");
     } else if (score === 7) {
-      e.preventdefault();
+      event.preventDefault();
       redirectTo("./index58.html");
     } else {
-      e.preventdefault();
+      event.preventDefault();
       redirectTo("./index57.html");
     }
   }
@@ -155,6 +155,11 @@ $(document).ready(function () {
 
     if (isCorrect) {
       $(`#parte${partNumber}`).css(positions[partNumber]);
+
+      $(`[id^="parte${partNumber}-"]`).css({
+        pointerEvents: "none",
+        cursor: "default",
+      });
     } else {
       $(`#parte${partNumber}`).addClass("incorrect-answer");
     }
