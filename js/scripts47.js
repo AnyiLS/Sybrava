@@ -55,8 +55,6 @@ $(document).ready(function () {
     }
   }
 
-  updateScore();
-
   function updateScore() {
     let score = 0;
     for (let i = 1; i <= 9; i++) {
@@ -69,8 +67,23 @@ $(document).ready(function () {
     return score;
   }
 
+  updateScore();
+
+  function calculateScore() {
+    let score = 0;
+    for (let i = 1; i <= 9; i++) {
+      const key = `part${i}Correct`;
+      const value = localStorage.getItem(key);
+      if (value === "true") {
+        score++;
+        console.log(score);
+      }
+    }
+    return score;
+  }
+
   function checkResults(event) {
-    const score = updateScore();
+    const score = calculateScore();
 
     if (score === 9) {
       event.preventDefault();
@@ -81,21 +94,13 @@ $(document).ready(function () {
     } else if (score === 7) {
       event.preventDefault();
       redirectTo("./index58.html");
-    } else {
+    } else if (score < 7) {
       event.preventDefault();
       redirectTo("./index57.html");
     }
   }
 
   checkResults();
-
-  function handleFinishAttempt() {
-    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
-    if (attempts <= MAX_ATTEMPTS) {
-      checkResults();
-    }
-  }
-
   $("#finishAttemptButton").on("click", function () {
     handleFinishAttempt();
   });
