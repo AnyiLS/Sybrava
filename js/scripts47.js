@@ -35,6 +35,7 @@ $(document).ready(function () {
     }
 
     updateScore();
+    updatePartPosition(questionNumber, isCorrect);
   });
 
   function incrementAttempts() {
@@ -42,9 +43,9 @@ $(document).ready(function () {
     attempts++;
     localStorage.setItem("attempts", attempts);
 
-    if (attempts > MAX_ATTEMPTS) {
+    if (attempts >= MAX_ATTEMPTS) {
       localStorage.setItem("blockTime", new Date().toISOString());
-      checkResults();
+      checkResults(true);
     }
   }
 
@@ -57,14 +58,8 @@ $(document).ready(function () {
   }
 
   function updateScore() {
-    let score = 0;
-    for (let i = 1; i <= 9; i++) {
-      if (localStorage.getItem(`part${i}Correct`) === "true") {
-        score++;
-      }
-    }
+    let score = calculateScore();
     $("#marcador").text(score);
-
     return score;
   }
 
@@ -73,32 +68,35 @@ $(document).ready(function () {
   function calculateScore() {
     let score = 0;
     for (let i = 1; i <= 9; i++) {
-      const key = `part${i}Correct`;
-      const value = localStorage.getItem(key);
-      if (value === "true") {
+      if (localStorage.getItem(`part${i}Correct`) === "true") {
         score++;
       }
     }
     return score;
   }
 
-  function checkResults() {
+  function checkResults(forceRedirect = false) {
     const score = calculateScore();
+    const attempts = parseInt(localStorage.getItem("attempts")) || 0;
 
-    if (score === 9) {
-      window.location.href = "./index60.html";
-    } else if (score === 8) {
-      window.location.href = "./index59.html";
-    } else if (score === 7) {
-      window.location.href = "./index58.html";
-    } else if (score < 7) {
-      window.location.href = "./index57.html";
+    if (forceRedirect || attempts >= MAX_ATTEMPTS || score === 9) {
+      if (score === 9) {
+        window.location.href = "./index60.html";
+      } else if (score === 8) {
+        window.location.href = "./index59.html";
+      } else if (score === 7) {
+        window.location.href = "./index58.html";
+      } else {
+        window.location.href = "./index57.html";
+      }
     }
   }
 
+  // Llamar a checkResults al inicio para verificar si se debe redirigir
   checkResults();
+
   $("#finishAttemptButton").on("click", function () {
-    handleFinishAttempt();
+    checkResults(true);
   });
 
   function updatePartPosition(partNumber, isCorrect) {
