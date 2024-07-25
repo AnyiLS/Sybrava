@@ -86,7 +86,7 @@ $(document).ready(function () {
         window.location.href = "./index59.html";
       } else if (score === 7) {
         window.location.href = "./index58.html";
-      } else {
+      } else if (score < 7) {
         window.location.href = "./index57.html";
       }
     }
