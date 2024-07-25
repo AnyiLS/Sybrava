@@ -33,7 +33,6 @@ $(document).ready(function () {
       $("#miPopupCorrect").show();
     } else {
       $("#miPopupIncorrect").show();
-      incrementAttempts();
     }
 
     updateScore();
