@@ -7,63 +7,32 @@ $(document).ready(function () {
     blockTime &&
     Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
   ) {
+    console.log("Usuario bloqueado, redirigiendo...");
     checkResults(true);
     return;
   }
 
-  $(".quiz-option").on("click", function () {
-    const $option = $(this);
-    const isCorrect = $option.data("correct") === true;
-    const questionNumber = parseInt(
-      $option.closest(".quiz-question").data("question"),
-      10
-    );
-
-    $(
-      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
-    ).removeClass("correct incorrect");
-
-    if (isCorrect) {
-      $option.addClass("correct");
-      localStorage.setItem(`part${questionNumber}Correct`, "true");
-      $("#miPopupCorrect").show();
-    } else {
-      $option.addClass("incorrect");
-      localStorage.setItem(`part${questionNumber}Correct`, "false");
-      $("#miPopupIncorrect").show();
-      incrementAttempts();
+  function checkResults(forceRedirect = false) {
+    if (!allQuestionsAnswered() && !forceRedirect) {
+      console.log(
+        "No todas las preguntas respondidas y no se fuerza redirección."
+      );
+      return;
     }
 
-    updateScore();
-    updatePartPosition(questionNumber, isCorrect);
-  });
+    const score = calculateScore();
+    console.log("Puntuación final:", score);
 
-  function incrementAttempts() {
-    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
-    attempts++;
-    localStorage.setItem("attempts", attempts);
-
-    if (attempts >= MAX_ATTEMPTS) {
-      localStorage.setItem("blockTime", new Date().toISOString());
-      checkResults(true);
+    if (score === 9) {
+      window.location.href = "./index60.html";
+    } else if (score === 8) {
+      window.location.href = "./index59.html";
+    } else if (score === 7) {
+      window.location.href = "./index58.html";
+    } else if (score < 7) {
+      window.location.href = "./index57.html";
     }
   }
-
-  for (let i = 1; i <= 9; i++) {
-    const partCorrect = localStorage.getItem(`part${i}Correct`);
-
-    if (partCorrect === "true" || partCorrect === "false") {
-      updatePartPosition(i, partCorrect === "true");
-    }
-  }
-
-  function updateScore() {
-    let score = calculateScore();
-    $("#marcador").text(score);
-    return score;
-  }
-
-  updateScore();
 
   function calculateScore() {
     let score = 0;
@@ -72,28 +41,37 @@ $(document).ready(function () {
         score++;
       }
     }
+    console.log("Puntuación calculada:", score);
     return score;
   }
 
-  function checkResults() {
-    const score = calculateScore();
-    if (score === 9) {
-      window.location.href = "./index60.html";
-    } else if (score === 8) {
-      window.location.href = "./index59.html";
-    } else if (score === 7) {
-      window.location.href = "./index58.html";
-    } else {
-      window.location.href = "./index57.html";
+  function allQuestionsAnswered() {
+    for (let i = 1; i <= 9; i++) {
+      if (localStorage.getItem(`part${i}Correct`) === null) {
+        return false;
+      }
     }
+    return true;
   }
 
-  // Llamar a checkResults al inicio para verificar si se debe redirigir
-  checkResults();
+  function updateScore() {
+    let score = calculateScore();
+    $("#marcador").text(score);
+    return score;
+  }
 
-  $("#finishAttemptButton").on("click", function () {
-    checkResults(true);
-  });
+  function incrementAttempts() {
+    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+    attempts++;
+    localStorage.setItem("attempts", attempts);
+    console.log("Intentos actuales:", attempts);
+
+    if (attempts >= MAX_ATTEMPTS) {
+      console.log("Máximo de intentos alcanzado, bloqueando...");
+      localStorage.setItem("blockTime", new Date().toISOString());
+      checkResults(true);
+    }
+  }
 
   function updatePartPosition(partNumber, isCorrect) {
     const positions = {
@@ -158,5 +136,65 @@ $(document).ready(function () {
       pointerEvents: "none",
       cursor: "default",
     });
+  }
+
+  $(".quiz-option").on("click", function () {
+    const $option = $(this);
+    const isCorrect = $option.data("correct") === true;
+    const questionNumber = parseInt(
+      $option.closest(".quiz-question").data("question"),
+      10
+    );
+
+    console.log(
+      `Pregunta ${questionNumber} respondida. Correcta: ${isCorrect}`
+    );
+
+    $(
+      `.quiz-question[data-question="${questionNumber}"] .quiz-option`
+    ).removeClass("correct incorrect");
+
+    if (isCorrect) {
+      $option.addClass("correct");
+      localStorage.setItem(`part${questionNumber}Correct`, "true");
+      $("#miPopupCorrect").show();
+    } else {
+      $option.addClass("incorrect");
+      localStorage.setItem(`part${questionNumber}Correct`, "false");
+      $("#miPopupIncorrect").show();
+      incrementAttempts();
+    }
+
+    updateScore();
+    updatePartPosition(questionNumber, isCorrect);
+
+    if (allQuestionsAnswered()) {
+      console.log("Todas las preguntas respondidas, verificando resultados...");
+      checkResults(true);
+    }
+  });
+
+  for (let i = 1; i <= 9; i++) {
+    const partCorrect = localStorage.getItem(`part${i}Correct`);
+    if (partCorrect === "true" || partCorrect === "false") {
+      updatePartPosition(i, partCorrect === "true");
+    }
+  }
+
+  updateScore();
+
+  $("#finishAttemptButton").on("click", function () {
+    console.log("Botón de finalizar intento presionado");
+    checkResults(true);
+  });
+
+  // Verificar y realizar la redirección al cargar la página
+  if (allQuestionsAnswered()) {
+    console.log(
+      "Todas las preguntas respondidas al cargar, realizando redirección..."
+    );
+    checkResults(true);
+  } else {
+    console.log("No todas las preguntas han sido respondidas al cargar.");
   }
 });
