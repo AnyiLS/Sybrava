@@ -75,20 +75,16 @@ $(document).ready(function () {
     return score;
   }
 
-  function checkResults(forceRedirect = false) {
+  function checkResults() {
     const score = calculateScore();
-    const attempts = parseInt(localStorage.getItem("attempts")) || 0;
-
-    if (forceRedirect || attempts >= MAX_ATTEMPTS || score === 9) {
-      if (score === 9) {
-        window.location.href = "./index60.html";
-      } else if (score === 8) {
-        window.location.href = "./index59.html";
-      } else if (score === 7) {
-        window.location.href = "./index58.html";
-      } else if (score < 7) {
-        window.location.href = "./index57.html";
-      }
+    if (score === 9) {
+      window.location.href = "./index60.html";
+    } else if (score === 8) {
+      window.location.href = "./index59.html";
+    } else if (score === 7) {
+      window.location.href = "./index58.html";
+    } else {
+      window.location.href = "./index57.html";
     }
   }
 
