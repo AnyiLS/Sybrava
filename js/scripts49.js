@@ -63,7 +63,6 @@ $(document).ready(function () {
       if (isCorrect) {
         $part.css(partPositions[i]);
       } else {
-        // Instead of hiding, set a default position or style
         $part.hide();
       }
     }
@@ -84,8 +83,6 @@ $(document).ready(function () {
     window.location.href = url;
   }
 
-
   updatePositions();
   updateScore();
-  scoreRedirect();
 });

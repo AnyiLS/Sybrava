@@ -5,7 +5,10 @@ $(document).ready(function () {
 
   // Check if the user is blocked
   const blockTime = localStorage.getItem("blockTime");
-  if (blockTime && Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION) {
+  if (
+    blockTime &&
+    Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
+  ) {
     checkResults(true);
     return;
   }
@@ -14,13 +17,18 @@ $(document).ready(function () {
   $(".quiz-option").on("click", function () {
     const $option = $(this);
     const isCorrect = $option.data("correct") === true;
-    const questionNumber = parseInt($option.closest(".quiz-question").data("question"), 10);
+    const questionNumber = parseInt(
+      $option.closest(".quiz-question").data("question"),
+      10
+    );
 
-    $(`#quiz-question-${questionNumber} .quiz-option`).removeClass("correct incorrect");
+    $(`#quiz-question-${questionNumber} .quiz-option`).removeClass(
+      "correct incorrect"
+    );
 
     $option.addClass(isCorrect ? "correct" : "incorrect");
     localStorage.setItem(`part${questionNumber}Correct`, isCorrect.toString());
-    
+
     if (isCorrect) {
       $("#miPopupCorrect").show();
     } else {
@@ -33,17 +41,14 @@ $(document).ready(function () {
     checkResults();
   });
 
-  // Event listener for closing incorrect popup
-  $("#cerrarPopupIncorrect").on("click", function(e) {
+  $("#cerrarPopupIncorrect").on("click", function (e) {
     $("#miPopupIncorrect").hide();
   });
 
-  // Event listener for finish attempt button
-  $("#finishAttemptButton").on("click", function(e) {
+  $("#finishAttemptButton").on("click", function (e) {
     handleFinishAttempt();
   });
 
-  // Initialize parts positions
   for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
     const partCorrect = localStorage.getItem(`part${i}Correct`);
     if (partCorrect === "true" || partCorrect === "false") {
@@ -61,14 +66,15 @@ $(document).ready(function () {
     if (attempts >= MAX_ATTEMPTS) {
       localStorage.setItem("blockTime", new Date().toISOString());
     }
-    
+
     // Update attempts display
     $("#attemptsCounter").text(attempts);
   }
 
   function updateScore() {
-    const score = Array.from({length: TOTAL_QUESTIONS}, (_, i) => 
-      localStorage.getItem(`part${i + 1}Correct`) === "true"
+    const score = Array.from(
+      { length: TOTAL_QUESTIONS },
+      (_, i) => localStorage.getItem(`part${i + 1}Correct`) === "true"
     ).filter(Boolean).length;
 
     $("#marcador").text(score);
@@ -92,14 +98,54 @@ $(document).ready(function () {
   function updatePartPosition(partNumber, isCorrect) {
     const positions = {
       1: { top: "58%", left: "73%", transform: "rotate(-18deg)" },
-      2: { scale: "0.95", top: "50.8%", left: "63.3%", transform: "rotate(-139.3deg)" },
-      3: { scale: "0.95", top: "47.1%", left: "64.6%", transform: "rotate(-52deg)" },
-      4: { scale: "0.95", top: "47.7%", left: "64.4%", transform: "rotate(-49.2deg)" },
-      5: { scale: "1", top: "38.1%", left: "67.3%", transform: "rotate(-31deg)" },
-      6: { scale: ".8", top: "44.6%", left: "63.7%", transform: "rotate(-5deg)" },
-      7: { scale: "0.98", top: "42.4%", left: "60.8%", transform: "rotate(5.3deg)" },
-      8: { scale: "0.9", top: "63.7%", left: "63.8%", transform: "rotate(-1.3deg)" },
-      9: { scale: "1.1", top: "45.1%", left: "62%", transform: "rotate(1.6deg)" }
+      2: {
+        scale: "0.95",
+        top: "50.8%",
+        left: "63.3%",
+        transform: "rotate(-139.3deg)",
+      },
+      3: {
+        scale: "0.95",
+        top: "47.1%",
+        left: "64.6%",
+        transform: "rotate(-52deg)",
+      },
+      4: {
+        scale: "0.95",
+        top: "47.7%",
+        left: "64.4%",
+        transform: "rotate(-49.2deg)",
+      },
+      5: {
+        scale: "1",
+        top: "38.1%",
+        left: "67.3%",
+        transform: "rotate(-31deg)",
+      },
+      6: {
+        scale: ".8",
+        top: "44.6%",
+        left: "63.7%",
+        transform: "rotate(-5deg)",
+      },
+      7: {
+        scale: "0.98",
+        top: "42.4%",
+        left: "60.8%",
+        transform: "rotate(5.3deg)",
+      },
+      8: {
+        scale: "0.9",
+        top: "63.7%",
+        left: "63.8%",
+        transform: "rotate(-1.3deg)",
+      },
+      9: {
+        scale: "1.1",
+        top: "45.1%",
+        left: "62%",
+        transform: "rotate(1.6deg)",
+      },
     };
 
     const $part = $(`#parte${partNumber}`);
@@ -113,7 +159,5 @@ $(document).ready(function () {
   function redirectTo(url) {
     window.location.href = url;
   }
-
-  // Initialize attempts counter
   $("#attemptsCounter").text(localStorage.getItem("attempts") || "0");
 });
