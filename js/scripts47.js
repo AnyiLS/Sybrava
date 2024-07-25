@@ -86,13 +86,13 @@ $(document).ready(function () {
     const score = calculateScore();
 
     if (score === 9) {
-      redirectTo("./index60.html");
+      window.location.href = "./index60.html";
     } else if (score === 8) {
-      redirectTo("./index59.html");
+      window.location.href = "./index59.html";
     } else if (score === 7) {
-      redirectTo("./index58.html");
+      window.location.href = "./index58.html";
     } else if (score < 7) {
-      redirectTo("./index57.html");
+      window.location.href = "./index57.html";
     }
   }
 
