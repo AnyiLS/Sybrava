@@ -35,7 +35,6 @@ $(document).ready(function () {
     }
 
     updateScore();
-    updatePartPosition(questionNumber, isCorrect);
   });
 
   function incrementAttempts() {
@@ -49,16 +48,12 @@ $(document).ready(function () {
     }
   }
 
-  restoreState();
+  for (let i = 1; i <= 9; i++) {
+    const partCorrect = localStorage.getItem(`part${i}Correct`);
 
-  function restoreState() {
-    for (let i = 1; i <= 9; i++) {
-      const partCorrect = localStorage.getItem(`part${i}Correct`);
-      if (partCorrect === "true" || partCorrect === false) {
-        updatePartPosition(i, partCorrect === true);
-      }
+    if (partCorrect === "true" || partCorrect === "false") {
+      updatePartPosition(i, partCorrect === "true");
     }
-    updateScore();
   }
 
   function updateScore() {
@@ -69,19 +64,27 @@ $(document).ready(function () {
       }
     }
     $("#marcador").text(score);
+
     return score;
   }
 
+  updateScore();
+
   function calculateScore() {
-    return updateScore();
+    let score = 0;
+    for (let i = 1; i <= 9; i++) {
+      const key = `part${i}Correct`;
+      const value = localStorage.getItem(key);
+      if (value === "true") {
+        score++;
+      }
+    }
+    return score;
   }
 
-  function redirectTo(url) {
-    window.location.href = url;
-  }
-
-  function checkResults(event) {
+  function checkResults() {
     const score = calculateScore();
+
     if (score === 9) {
       redirectTo("./index60.html");
     } else if (score === 8) {
@@ -93,6 +96,7 @@ $(document).ready(function () {
     }
   }
 
+  checkResults();
   $("#finishAttemptButton").on("click", function () {
     handleFinishAttempt();
   });
