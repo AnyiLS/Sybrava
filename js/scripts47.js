@@ -35,6 +35,7 @@ $(document).ready(function () {
     }
 
     updateScore();
+    updatePartPosition(questionNumber, isCorrect);
   });
 
   function incrementAttempts() {
@@ -44,15 +45,20 @@ $(document).ready(function () {
 
     if (attempts > MAX_ATTEMPTS) {
       localStorage.setItem("blockTime", new Date().toISOString());
+      checkResults();
     }
   }
 
-  for (let i = 1; i <= 9; i++) {
-    const partCorrect = localStorage.getItem(`part${i}Correct`);
+  restoreState();
 
-    if (partCorrect === "true" || partCorrect === "false") {
-      updatePartPosition(i, partCorrect === "true");
+  function restoreState() {
+    for (let i = 1; i <= 9; i++) {
+      const partCorrect = localStorage.getItem(`part${i}Correct`);
+      if (partCorrect === "true" || partCorrect === false) {
+        updatePartPosition(i, partCorrect === true);
+      }
     }
+    updateScore();
   }
 
   function updateScore() {
@@ -63,44 +69,30 @@ $(document).ready(function () {
       }
     }
     $("#marcador").text(score);
-
     return score;
   }
 
-  updateScore();
-
   function calculateScore() {
-    let score = 0;
-    for (let i = 1; i <= 9; i++) {
-      const key = `part${i}Correct`;
-      const value = localStorage.getItem(key);
-      if (value === "true") {
-        score++;
-        console.log(score);
-      }
-    }
-    return score;
+    return updateScore();
+  }
+
+  function redirectTo(url) {
+    window.location.href = url;
   }
 
   function checkResults(event) {
     const score = calculateScore();
-
     if (score === 9) {
-      event.preventDefault();
       redirectTo("./index60.html");
     } else if (score === 8) {
-      event.preventDefault();
       redirectTo("./index59.html");
     } else if (score === 7) {
-      event.preventDefault();
       redirectTo("./index58.html");
     } else if (score < 7) {
-      event.preventDefault();
       redirectTo("./index57.html");
     }
   }
 
-  checkResults();
   $("#finishAttemptButton").on("click", function () {
     handleFinishAttempt();
   });
@@ -160,13 +152,13 @@ $(document).ready(function () {
 
     if (isCorrect) {
       $(`#parte${partNumber}`).css(positions[partNumber]);
-
-      $(`[id^="parte${partNumber}-"]`).css({
-        pointerEvents: "none",
-        cursor: "default",
-      });
     } else {
       $(`#parte${partNumber}`).addClass("incorrect-answer");
     }
+
+    $(`[id^="parte${partNumber}-"]`).css({
+      pointerEvents: "none",
+      cursor: "default",
+    });
   }
 });

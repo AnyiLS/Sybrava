@@ -70,6 +70,18 @@ body {
   border: transparent;
 }
 
+.Home {
+  width: 5.9%;
+  height: 10%;
+  position: absolute;
+  border-radius: 100%;
+  top: 84.9%;
+  left: 91.1%;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
 .portada {
   position: absolute;
   background-size: cover;
