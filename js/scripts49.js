@@ -79,10 +79,6 @@ $(document).ready(function () {
     return score;
   }
 
-  function redirectTo(url) {
-    window.location.href = url;
-  }
-
   updatePositions();
   updateScore();
 });

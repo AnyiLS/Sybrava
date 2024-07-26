@@ -159,6 +159,18 @@ body {
   width: 3%;
 }
 
+.Next2 {
+  width: 8.9%;
+  height: 15%;
+  position: absolute;
+  border-radius: 100%;
+  top: 81.3%;
+  left: 88.8%;
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
 .tooltip {
   position: absolute;
   background: transparent;

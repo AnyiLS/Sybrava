@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const MAX_ATTEMPTS = 4;
+  const MAX_ATTEMPTS = 3;
   const BLOCK_DURATION = 24 * 60 * 60 * 1000;
 
   const blockTime = localStorage.getItem("blockTime");
@@ -7,31 +7,8 @@ $(document).ready(function () {
     blockTime &&
     Date.now() - new Date(blockTime).getTime() < BLOCK_DURATION
   ) {
-    console.log("Usuario bloqueado, redirigiendo...");
-    checkResults(true);
+    forceRedirect();
     return;
-  }
-
-  function checkResults(forceRedirect = false) {
-    if (!allQuestionsAnswered() && !forceRedirect) {
-      console.log(
-        "No todas las preguntas respondidas y no se fuerza redirección."
-      );
-      return;
-    }
-
-    const score = calculateScore();
-    console.log("Puntuación final:", score);
-
-    if (score === 9) {
-      window.location.href = "./index60.html";
-    } else if (score === 8) {
-      window.location.href = "./index59.html";
-    } else if (score === 7) {
-      window.location.href = "./index58.html";
-    } else if (score < 7) {
-      window.location.href = "./index57.html";
-    }
   }
 
   function calculateScore() {
@@ -41,7 +18,6 @@ $(document).ready(function () {
         score++;
       }
     }
-    console.log("Puntuación calculada:", score);
     return score;
   }
 
@@ -60,18 +36,41 @@ $(document).ready(function () {
     return score;
   }
 
-  function incrementAttempts() {
-    let attempts = parseInt(localStorage.getItem("attempts")) || 0;
-    attempts++;
-    localStorage.setItem("attempts", attempts);
-    console.log("Intentos actuales:", attempts);
+  function checkScore() {
+    const score = calculateScore();
 
-    if (attempts >= MAX_ATTEMPTS) {
-      console.log("Máximo de intentos alcanzado, bloqueando...");
-      localStorage.setItem("blockTime", new Date().toISOString());
-      checkResults(true);
+    let redirectURL;
+    if (score === 9) {
+      redirectURL = "./index60.html";
+    } else if (score > 7) {
+      redirectURL = "./index59.html";
+    } else if (score > 6) {
+      redirectURL = "./index58.html";
+    } else if (score < 6) {
+      redirectURL = "./index57.html";
     }
+
+    window.location.href = redirectURL;
   }
+
+  function forceRedirect() {
+    const score = calculateScore();
+
+    let redirectURL;
+    if (score > 8) {
+      redirectURL = "./index60.html";
+    } else if (score > 7) {
+      redirectURL = "./index59.html";
+    } else if (score > 6) {
+      redirectURL = "./index58.html";
+    } else {
+      redirectURL = "./index57.html";
+    }
+
+    window.location.href = redirectURL;
+  }
+
+  updateScore();
 
   function updatePartPosition(partNumber, isCorrect) {
     const positions = {
@@ -146,10 +145,6 @@ $(document).ready(function () {
       10
     );
 
-    console.log(
-      `Pregunta ${questionNumber} respondida. Correcta: ${isCorrect}`
-    );
-
     $(
       `.quiz-question[data-question="${questionNumber}"] .quiz-option`
     ).removeClass("correct incorrect");
@@ -162,15 +157,13 @@ $(document).ready(function () {
       $option.addClass("incorrect");
       localStorage.setItem(`part${questionNumber}Correct`, "false");
       $("#miPopupIncorrect").show();
-      incrementAttempts();
     }
 
     updateScore();
     updatePartPosition(questionNumber, isCorrect);
 
     if (allQuestionsAnswered()) {
-      console.log("Todas las preguntas respondidas, verificando resultados...");
-      checkResults(true);
+      checkScore();
     }
   });
 
@@ -181,20 +174,13 @@ $(document).ready(function () {
     }
   }
 
-  updateScore();
-
-  $("#finishAttemptButton").on("click", function () {
-    console.log("Botón de finalizar intento presionado");
-    checkResults(true);
-  });
-
-  // Verificar y realizar la redirección al cargar la página
   if (allQuestionsAnswered()) {
-    console.log(
-      "Todas las preguntas respondidas al cargar, realizando redirección..."
-    );
-    checkResults(true);
-  } else {
-    console.log("No todas las preguntas han sido respondidas al cargar.");
+    checkScore();
+  }
+
+  let attempts = parseInt(localStorage.getItem("attempts")) || 0;
+  if (attempts >= MAX_ATTEMPTS) {
+    window.location.href = "./index62.html";
+    return;
   }
 });
