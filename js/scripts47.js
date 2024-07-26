@@ -40,7 +40,7 @@ $(document).ready(function () {
     const score = calculateScore();
 
     let redirectURL;
-    if (score === 9) {
+    if (score > 8) {
       redirectURL = "./index60.html";
     } else if (score > 7) {
       redirectURL = "./index59.html";
@@ -63,7 +63,7 @@ $(document).ready(function () {
       redirectURL = "./index59.html";
     } else if (score > 6) {
       redirectURL = "./index58.html";
-    } else {
+    } else if (score < 6) {
       redirectURL = "./index57.html";
     }
 

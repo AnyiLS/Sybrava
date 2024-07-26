@@ -246,7 +246,7 @@ body {
   }
 }
 
-@media (min-width: 1301px) {
+@media (min-width: 1260px) {
   .puntaje {
     top: 85.3%;
     left: 63%;
