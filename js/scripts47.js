@@ -112,9 +112,9 @@ $(document).ready(function () {
         transform: "rotate(5.3deg)",
       },
       8: {
-        scale: "0.9",
-        top: "63.7%",
-        left: "63.8%",
+        scale: "2",
+        top: "69.6%",
+        left: "64.3%",
         transform: "rotate(-1.3deg)",
       },
       9: {

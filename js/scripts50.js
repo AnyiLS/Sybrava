@@ -44,10 +44,10 @@ $(document).ready(function () {
       transform: " rotate(1.6deg)",
     },
     9: {
-      scale: "0.9",
-      top: "63.7%",
-      left: "63.8%",
+      top: "69.6%",
+      left: "64.3%",
       transform: "rotate(-1.3deg)",
+      scale: "2",
     },
   };
 
@@ -74,7 +74,6 @@ $(document).ready(function () {
     return score;
   }
 
-
   $(".hover-target").hover(
     function () {
       $(this).siblings(".tooltip").show();
@@ -86,5 +85,4 @@ $(document).ready(function () {
 
   updatePositions();
   updateScore();
-
 });

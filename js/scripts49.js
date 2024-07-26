@@ -49,10 +49,10 @@ $(document).ready(function () {
       scale: "1.68",
     },
     9: {
-      top: "54.7%",
-      left: "13.6%",
+      top: "63.6%",
+      left: "14.5%",
       transform: "rotate(-1.3deg)",
-      scale: "1.55",
+      scale: "3",
     },
   };
 

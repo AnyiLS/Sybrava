@@ -204,10 +204,11 @@ body {
 
 .parte9 {
   position: absolute;
-  top: 56%;
+  top: 61.5%;
   left: 9%;
   width: 3%;
   cursor: pointer;
+  scale: 2;
 }
 
 @font-face {
