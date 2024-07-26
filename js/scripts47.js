@@ -180,7 +180,7 @@ $(document).ready(function () {
 
   let attempts = parseInt(localStorage.getItem("attempts")) || 0;
   if (attempts >= MAX_ATTEMPTS) {
-    window.location.href = "./index62.html";
+    window.location.href = "./index46.html";
     return;
   }
 });
