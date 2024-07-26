@@ -20,4 +20,18 @@ $(document).ready(function () {
   });
 
   CambioVentana();
+
+  function getAttempts() {
+    return parseInt(localStorage.getItem("attempts")) || 0;
+  }
+  function checkAttempts() {
+    const attempts = getAttempts();
+    const playButton = document.getElementById("playButton");
+
+    if (attempts >= 3) {
+      playButton.disabled = true;
+      playButton.style.pointerEvents = "none";
+    }
+  }
+  checkAttempts();
 });
