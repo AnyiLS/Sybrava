@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Estructura Módulo 1 Sybrava</title>
+
+		<link rel="stylesheet" href="./css/styles64.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+		<!-- Scripts -->
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/functions.js"></script>
+	</head>
+	<body class="ancho">
+		<div class="container">
+			<img
+				src="./imagenes/portada63.webp"
+				alt="Portada"
+				class="cover-image" />
+
+			<a href="./index.html" class="boton-atras"></a>
+			<a href="./index65.html" class="boton-next"></a>
+
+			<!-- video -->
+			<div class="play-boton"></div>
+			<video class="reproduc" id="reproduc" controls autoplay muted>
+				<source
+					src="./imagenes/videos/sibrava1.mp4"
+					type="video/mp4" />
+			</video>
+			<div class="video-2" id="video"></div>
+
+			<div class="vutom-col"></div>
+
+			<!-- <div class="seccion-video1">
+				<img src="./imagenes/sesion-video1.png" alt="" />
+			</div> -->
+
+			<div
+				class="boton-play circle cursor animate__animated animate__pulse animate__infinite">
+				<img src="./imagenes/boton-play1.png" alt="" />
+			</div>
+
+			
+		</div>
+
+		<!-- Scripts -->
+		<script src="./js/script64.js"></script>
+		<script>
+			$(document).ready(function () {
+				const slide = localStorage.getItem('slide7')
+				if (slide && slide === 'true') {
+					$('.boton-next').show()
+					$('.cursor').hide()
+					$('.vutom-col').hide()
+				} else {
+					localStorage.setItem('slide7', 'false')
+					$('.boton-next').hide()
+					$('.vutom-col').show()
+				}
+			})
+		</script>
+	</body>
+</html>

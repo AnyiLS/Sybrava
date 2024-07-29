@@ -1,0 +1,11 @@
+:root {
+    --background-slide-1: url('../img/portada1.jpg');
+    /* background size */
+    --full: 100% 100%;
+    /* width */
+    --general-width: calc((16 / 10) * 100vh);
+    --general-heigth: calc((10 / 16) * 100vh);
+    --mobile-heigth: calc((10 / 16) * 110vh);
+    /* Colors */
+    --black-color: #000;
+}

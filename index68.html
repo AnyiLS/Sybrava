@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Estructura Módulo 1 Sybrava</title>
+
+		<link rel="stylesheet" href="./css/styles68.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+		<!-- Scripts -->
+		<script src="./js/jquery-3.2.1.min.js"></script>
+		<script src="./js/functions.js"></script>
+	</head>
+	<body class="ancho">
+		<div class="container">
+			<img
+				src="./imagenes/portada68.webp"
+				alt="Portada"
+				class="cover-image" />
+
+			<a href="./index67.html" class="boton-next"></a>
+
+			<div class="openModal"></div>
+			<!-- modal -->
+			<div class="modal" style="display: none; height: 100%">
+				<img src="./imagenes/pop68.webp" class="ancho" id="image" />
+				<div class="closeModal"></div>
+			</div>
+
+			<div class="openModal1"></div>
+			<!-- modal -->
+			<div class="modal1" style="display: none; height: 100%">
+				<img src="./imagenes/pop68-1bp.webp" class="ancho" id="image" />
+				<div class="closeModal1"></div>
+			</div>
+
+			<div class="openModal2"></div>
+			<!-- modal -->
+			<div class="modal2" style="display: none; height: 100%">
+				<img src="./imagenes/pop68-2.webp" class="ancho" id="image" />
+				<div class="closeModal2"></div>
+			</div>
+
+			<div
+				class="cursor circle animate__animated animate__pulse animate__infinite">
+				<img src="./imagenes/boton-mas.png" alt="" />
+			</div>
+			<div
+				class="cursor1 circle animate__animated animate__pulse animate__infinite">
+				<img src="./imagenes/boton-mas.png" alt="" />
+			</div>
+			<div
+				class="cursor2 circle animate__animated animate__pulse animate__infinite">
+				<img src="./imagenes/boton-mas.png" alt="" />
+			</div>
+
+			<div class="vutom-col"></div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="./js/script68.js"></script>
+		<script src="./js/helpers.js"></script>
+		<script>
+			$(document).ready(function () {
+				const criterias = [
+					{name: 'slide68-1', selector: '.cursor'},
+					{name: 'slide68-2', selector: '.cursor1'},
+					{name: 'slide68-3', selector: '.cursor2'},
+				];
+
+				handleSlide(criterias);
+				handleValidateCriterias(criterias);
+			})
+		</script>
+	</body>
+</html>
