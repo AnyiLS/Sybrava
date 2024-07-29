@@ -149,7 +149,7 @@ body {
 
 
 /* Responsive */
-@media (max-width: 1366px) {
+@media (max-width: 1365px) and (min-height: 768px) {
 	.container {
 		width: 100vw;
 		height: auto;
@@ -161,7 +161,7 @@ body {
 	}
 }
 
-@media (min-height: 625px) and (max-height: 767px) {
+@media (max-height: 767px) {
 	.container {
 		width: auto;
 		height: 100vh;

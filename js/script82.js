@@ -11,6 +11,45 @@ const abrirModal = (selector) => $(selector).show();
 const cerrarModal = (selector) => $(selector).hide();
 
 $(document).ready(function () {
+	// modal 1
+	$('.openModal').on('click', () => {
+		const selectors = ['slide70-2', 'slide70-3'];
+
+		$('.modal').css('display', 'block')
+
+		localStorage.setItem('slide70-1', 'true')
+		if (selectors.every((slide) => localStorage.getItem(slide) === 'true')) {
+			$('.boton-next').show()
+			$('.vutom-col').hide()
+			localStorage.setItem('slide67-3', 'true')
+		}
+
+		$('.cursor').hide()
+	})
+	// cerra modal
+	$('.closeModal').on('click', () => {
+		$('.modal').css('display', 'none')
+	})
+
+	let bandera = false
+	$('#abrir1').on('click', function () {
+		localStorage.setItem('slide17-1', 'true')
+		if (localStorage.getItem('slide17-2') === 'true') {
+			$('.boton-next').show()
+			$('.vutom-col').hide()
+		}
+		$('.cursor').hide()
+		if (bandera) {
+			$('.menu1').css('display', 'none')
+			bandera = !bandera
+		} else {
+			$('.menu1').css('display', 'block')
+			bandera = !bandera
+		}
+	})
+
+
+	
 	for (let i = 0; i < 32; i++) {
 		$(`#map-${i + 1}`).hide()
 	}
