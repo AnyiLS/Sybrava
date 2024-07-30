@@ -1,0 +1,388 @@
+@import './variables.css';
+@import './classes.css';
+
+body {
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--black-color);
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.container .cover-image {
+	width: auto;
+	height: 100vh;
+}
+
+.start-button {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+}
+
+.boton-home {
+	position: absolute;
+	width: 6%;
+	height: 10%;
+	top: 4%;
+	right: 2%;
+}
+
+.boton-atras {
+	position: absolute;
+	width: 6%;
+	height: 10%;
+	top: 85%;
+	left: 5%;
+}
+
+.boton-next {
+	position: absolute;
+	width: 6%;
+	height: 10%;
+	top: 85%;
+	right: 2%;
+}
+
+.corazon {
+	position: absolute;
+	width: 34.8%;
+	left: 6%;
+	top: 19%;
+	z-index: 1;
+}
+
+.corazon img {
+	width: 100%;
+	height: 100%;
+	
+}
+
+/* Partes del corazon */
+.parte1 {
+	position: absolute;
+    width: 8.7%;
+    left: 10.4%;
+    top: 19%; 
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte1 img {
+	width: 100%;
+	height: auto;
+}
+
+
+
+.parte2 {
+	position: absolute;
+    width: 29.2%;
+    left: 8.9%;
+    top: 32.9%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte2 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte3 {
+	position: absolute;
+	width: 31.9%;
+    left: 8.9%;
+    top: 41%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte3 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte4 {
+	position: absolute;
+	width: 14.9%;
+    left: 24.4%;
+    top: 44.7%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte4 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte5 {
+	position: absolute;
+	width: 23.3%;
+    left: 17%;
+    top: 23.2%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte5 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte6 {
+	position: absolute;
+    width: 8.1%;
+    left: 25.4%;
+    top: 58.2%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte6 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte7 {
+	position: absolute;
+    width: 12.3%;
+    left: 14.7%;
+    top: 62.6%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte7 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte8 {
+	position: absolute;
+    width: 10.4%;
+    left: 24.3%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+    top: 51.5%;
+}
+
+.parte8 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte9 {
+	position: absolute;
+	width: 7.9%;
+    left: 11.5%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+    top: 45%;
+}
+
+.parte9 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte10 {
+	position: absolute;
+    width: 9.7%;
+    left: 18.1%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+    top: 18.8%;
+}
+
+.parte10 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte11 {
+	position: absolute;
+	width: 17.1%;
+    left: 6.7%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+    top: 57.4%;
+}
+
+.parte11 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte12 {
+	position: absolute;
+    width: 21.7%;
+    left: 7.4%;
+    top: 46.5%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte12 img {
+	width: 100%;
+	height: auto;
+}
+
+.parte13 {
+	position: absolute;
+	width: 3.3%;
+    left: 10.4%;
+    top: 66.5%;
+	overflow: hidden;
+	animation: fullpart 6s ease-in;
+}
+
+.parte13 img {
+	width: 100%;
+	height: auto;
+}
+/* Partes del corazon */
+
+@keyframes fullpart {
+	to {
+		height: 100%;
+	}
+
+	from {
+		height: 0px;
+	}
+}
+
+.boton-next {
+	position: absolute;
+    width: 5%;
+    right: 2%;
+    top: 84%;
+	cursor: pointer;
+}
+.boton-next img {
+	width: 100%;
+	height: 100%;
+}
+
+.boton-next1 {
+	position: absolute;
+    width: 5%;
+    right: 1%;
+    top: 48%;
+}
+.boton-next1 img {
+	width: 100%;
+	height: 100%;
+}
+
+.boton-next2 {
+	position: absolute;
+    width: 5%;
+    right: 10%;
+    top: 48%;
+}
+.boton-next2 img {
+	width: 100%;
+	height: 100%;
+}
+
+.dowload {
+	position: absolute;
+    width: 53%;
+    height: 21%;
+    left: 9%;
+    top: 51%;
+}
+
+.puntero {
+	position: absolute;
+    width: 3.2%;
+    height: 7.4%;
+    top: 63.6%;
+    left: 12%;
+}
+
+.puntero img {
+	width: 100%;
+	height: 100%;
+	transform: rotate(184deg);
+}
+
+.puntero.animate__pulse {
+	animation-duration: 0.5s; /* Cambia el valor para ajustar la velocidad */
+}
+
+.puntero::before {
+	content: '';
+	position: absolute;
+	top: -10%;
+	left: -10%;
+	width: 120%;
+	height: 120%;
+	background: radial-gradient(circle, rgb(99 94 94 / 63%), #dbd0d0);
+	border-radius: 50%;
+	z-index: -1; /* Aseguramos que el resplandor esté detrás del puntero */
+	opacity: 0.7; /* Ajusta la opacidad según la intensidad del resplandor */
+	animation: pulseGlow 1.5s infinite; /* Animación para el resplandor */
+}
+
+/* Definimos la animación para el resplandor */
+@keyframes pulseGlow {
+	0% {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	50% {
+		transform: scale(1.5);
+		opacity: 0.3;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+}
+
+/* Responsive */
+@media (max-width: 1365px) and (min-height: 768px) {
+	.container {
+		width: 100vw;
+		height: auto;
+	}
+
+	.container .cover-image {
+		width: auto;
+		height: 100vh;
+	}
+}
+
+@media (max-height: 767px) {
+	.container {
+		width: auto;
+		height: 100vh;
+	}
+}
+
+@media (min-height: 625px) and (max-height: 1280px) and (max-width: 1024px) {
+	.container {
+		width: 100vw;
+		height: auto;
+	}
+
+	.container .cover-image {
+		width: 100vw;
+		height: auto;
+	}
+}

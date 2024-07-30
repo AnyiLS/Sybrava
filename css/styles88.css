@@ -1,0 +1,1192 @@
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-user-select: none;
+	user-select: none;
+	cursor: default;
+	outline: 0;
+	overflow: hidden;
+}
+
+html {
+	background: #525659;
+	width: 100vw;
+	height: 100vh;
+}
+
+body {
+	background-color: #525659;
+	position: absolute;
+	margin: 0;
+	width: 100%;
+	height: 100vh;
+}
+.header {
+	width: 100%;
+	background-color: #333; 
+	padding: 20px 0px;
+	position: fixed; 
+	top: 0;
+	left: 0;
+	z-index: 1000; 
+}
+
+.header-right {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #fff;
+}
+
+.ancho {
+	width: 100%;
+	height: calc((10 / 7) * 110vw);
+	left: calc(50% - 50vw);
+	top: 5%;
+}
+
+.alto {
+	width: 768px;
+	top: 0%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	height: 100vh;
+}
+
+.contenedor {
+	/* background: url('../imagenes/portada-edit.webp');
+	background-size: 100% 100%;
+	background-repeat: no-repeat; */
+	position: relative;
+	width: 100%;
+	height: 1024px;
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+
+.portada {
+	background: url('../imagenes/portada-edit.webp');
+	background-size: 768px 1024px;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 768px;
+	height: 1024px;
+	overflow: hidden;
+}
+
+.content {
+	width: 768px;
+	overflow: auto;
+	position: absolute;
+}
+
+@media (max-width: 768px) {
+	.portada {
+		background-size: 100% 100%;
+		height: 100%;
+	}
+
+	.content {
+		width: 100%;
+		height: 100vh;
+	}
+
+	.contenedor {
+		height: auto;
+		background-size: contain;
+	}
+}
+
+/*--------------------------------------------------------------*/
+
+/* SECION 2 */
+.container_dos {
+	/* background: url('../imagenes/portada--edit.webp');
+	background-size: 100% 100%;
+	background-repeat: no-repeat; */
+	position: relative;
+	width: 100%;
+	height: 1024px;
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+
+.abrir1 {
+	position: absolute;
+	width: 25.4%;
+	height: 2.3%;
+	right: 3%;
+	top: 43%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 1 */
+.menu1 {
+	position: absolute;
+	width: 56.2%;
+	top: 45.6%;
+	right: 1.8%;
+	z-index: 100;
+}
+
+.menu1 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #232e5c50;
+	top: 0%;
+	display: none;
+}
+
+/* hover 2 */
+.abrir2 {
+	position: absolute;
+	width: 57%;
+	height: 3.5%;
+	right: 3%;
+	top: 61%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 1 */
+.menu2 {
+	position: absolute;
+	width: 47%;
+	top: 58.3%;
+	right: 21.8%;
+	z-index: 100;
+}
+
+.menu2 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove2 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	background-color: #232e5c50;
+	display: none;
+}
+/* hover 2 */
+
+/* hover 3 */
+.abrir3 {
+	position: absolute;
+	width: 11%;
+	height: 2.5%;
+	right: 15%;
+	top: 67.7%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 1 */
+.menu3 {
+	position: absolute;
+	width: 40%;
+	top: 69.6%;
+	right: 0.5%;
+	z-index: 100;
+}
+
+.menu3 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove3 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	background-color: #232e5c50;
+	display: none;
+}
+/* hover 3 */
+
+/* hover 4 */
+.abrir4 {
+	position: absolute;
+	width: 28%;
+	height: 2.5%;
+	right: 15%;
+	top: 90.7%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 1 */
+.menu4 {
+	position: absolute;
+	width: 53%;
+	top: 82%;
+	right: 41%;
+	z-index: 100;
+}
+
+.menu4 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove4 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #232e5c50;
+	top: 0%;
+	display: none;
+}
+
+@media (max-width: 768px) {
+	.container_dos {
+		background-size: contain;
+		height: auto;
+	}
+}
+/* hover 4 */
+
+/* SECION 2 */
+
+/*--------------------------------------------------------------*/
+
+/* SECION 3 */
+.container_tres {
+	/* background: url('../imagenes/portada-88-1.webp');
+	background-size: 100% 100%;
+	background-repeat: no-repeat; */
+	position: relative;
+	width: 100%;
+	height: 1024px;
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+
+/* hover 5 */
+.abrir5 {
+	position: absolute;
+	width: 7%;
+    height: 2.5%;
+    right: 41.1%;
+    top: 88.5%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 5 */
+.menu5 {
+	position: absolute;
+	width: 45%;
+    top: 84.6%;
+    right: 46.4%;
+	z-index: 100;
+}
+
+.menu5 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove5 {
+	position: absolute;
+	height: 100%;
+	top: 0%;
+	width: 100%;
+	background-color: #232e5c50;
+	display: none;
+}
+/* hover 5 */
+
+
+/* hover 6 */
+.abrir6 {
+	position: absolute;
+	width: 7%;
+    height: 2.5%;
+    right: 32.6%;
+    top: 88.5%;
+	z-index: 10000;
+	cursor: pointer;
+}
+/* imagen 6 */
+.menu6 {
+	position: absolute;
+	width: 45%;
+    top: 77.6%;
+    right: 3.4%;
+	z-index: 100;
+}
+
+.menu6 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove6 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	background-color: #232e5c50;
+	display: none;
+}
+/* hover 6 */
+
+@media (max-width: 768px) {
+	.container_tres {
+		background-size: contain;
+		height: auto;
+	}
+}
+
+/* SECION 3 */
+/*--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------*/
+/* SECION 4 */
+.container_cuatro {
+	background: url('../imagenes/portada-88-2.webp');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: relative;
+	width: 100%;
+	height: 1024px;
+	overflow: hidden;
+}
+
+/* hover 6 */
+.abrir7 {
+	position: absolute;
+	width: 19.4%;
+    height: 2.5%;
+    right: 77.6%;
+    top: 13.1%;
+	z-index: 100;
+	cursor: pointer;
+}
+/* imagen 6 */
+.menu7 {
+	position: absolute;
+	width: 60%;
+    top: 16%;
+    right: 35%;
+	z-index: 100;
+}
+
+.menu7 img {
+	width: 100%;
+	height: 100%;
+}
+
+.fondo-hove7 {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	background-color: #232e5c50;
+	display: none;
+}
+/* hover 6 */
+/* SECION 4 */
+
+/*--------------------------------------------------------------*/
+
+/* SECION 5 */
+.container_cinco {
+	background: url('../Assets/portada6.jpg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.pop_cinco {
+	background: url(../images/pop_cinco.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: absolute;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 110;
+}
+
+.abrir_cinco {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 19%;
+	height: 5%;
+	right: 23%;
+	top: 75%;
+	cursor: pointer;
+}
+.cerrar_cinco {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 5%;
+	height: 6%;
+	right: 15%;
+	top: 20%;
+	z-index: 111;
+	cursor: pointer;
+}
+
+.volver_cinco {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 21%;
+	height: 97%;
+	left: -1%;
+	top: 4%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_cinco {
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 21%;
+	height: 97%;
+	right: -6%;
+	top: 4%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+@media (max-width: 768px) {
+	.container_cuatro {
+		background-size: contain;
+		height: auto;
+	}
+}
+/* SECION 5 */
+
+/* SECION 6 */
+
+.container_seis {
+	background: url('../Assets/portada7.jpg');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.container_modal1 {
+	background: url(../images/popup.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: none;
+}
+
+.container_modal2 {
+	background: url(../images/popup2.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: none;
+}
+
+.pop_seis {
+	background: url(../images/pop_seis.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: absolute;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 110;
+}
+
+.abrir_seis {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 19%;
+	height: 5%;
+	right: 23%;
+	top: 73%;
+	cursor: pointer;
+}
+.cerrar_seis {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 5%;
+	height: 6%;
+	right: 15%;
+	top: 20%;
+	z-index: 111;
+	cursor: pointer;
+}
+
+.volver_seis {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 21%;
+	height: 97%;
+	left: -1%;
+	top: 4%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_seis {
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 21%;
+	height: 97%;
+	right: -6%;
+	top: 4%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 6 */
+
+/* SECION 7 */
+
+.container_siete {
+	background: url(../images/portada8.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.pop_siete {
+	background: url(../images/pop_siete.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: absolute;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 110;
+}
+
+.pop_siete_dos {
+	background: url(../images/pop_siete_dos.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: absolute;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 110;
+}
+
+.abrir_siete {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 43%;
+	height: 10%;
+	right: 46%;
+	top: 43%;
+	cursor: pointer;
+}
+
+.abrir_siete_dos {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 43%;
+	height: 10%;
+	right: 46%;
+	top: 58%;
+	cursor: pointer;
+}
+.cerrar_siete {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 5%;
+	height: 6%;
+	right: 15%;
+	top: 20%;
+	z-index: 111;
+	cursor: pointer;
+}
+
+.cerrar_siete_dos {
+	background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 5%;
+	height: 6%;
+	right: 15%;
+	top: 20%;
+	z-index: 111;
+	cursor: pointer;
+}
+
+.volver_siete {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_siete {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 7 */
+
+/* SECION 8 */
+.container_ocho {
+	background: url(../images/portada9.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_ocho {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_ocho {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 8 */
+
+/* SECION 9 */
+.container_nine {
+	background: url(../images/portada10.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_nine {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_nine {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 9 */
+
+/* SECION 10 */
+.container_diez {
+	background: url(../images/portada11.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_diez {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_diez {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 10 */
+
+/* SECION 11 */
+.container_once {
+	background: url(../images/portada12.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_once {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_once {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 11 */
+
+/* SECION 12 */
+.container_doce {
+	background: url(../images/portada13.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_doce {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_doce {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+/* SECION 12 */
+
+/* SECION 13 */
+.container_trece {
+	background: url(../images/portada14.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_trece {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_trece {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+
+.slide15 {
+	width: 18%;
+	height: 11%;
+	position: absolute;
+	top: 34.4%;
+	left: 19%;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+
+.slide17 {
+	width: 18%;
+	height: 11%;
+	position: absolute;
+	top: 46.4%;
+	left: 19%;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+	z-index: 10;
+}
+
+.slide19 {
+	width: 18%;
+	height: 11%;
+	position: absolute;
+	top: 59%;
+	left: 19%;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+
+.slide21 {
+	width: 18%;
+	height: 11%;
+	position: absolute;
+	top: 71%;
+	left: 19%;
+	background: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+/* SECION 13 */
+
+/* SECION 14 */
+.container_katorce {
+	background: url(../images/portada15.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_katorce {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_katorce {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+
+/* SECION 14 */
+
+/* SECION 15 */
+.container_quince {
+	background: url(../images/portada16.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_quince {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_quince {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+
+/* SECION 15 */
+
+/* SECION 16 */
+.container_diecices {
+	background: url(../images/portada17.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_diecices {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_diecices {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+
+/* SECION 16 */
+
+/* SECION 17 */
+.container_diesiciete {
+	background: url(../images/portada18.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_diesiciete {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_diesiciete {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+}
+
+/* SECION 17 */
+
+/* SECION 18 */
+.container_diesiocho {
+	background: url(../images/portada19.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.volver_diesiocho {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	left: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+	animation: infinite 1s;
+	transform: rotate(179deg);
+}
+.siguiente_diesiocho {
+	background: url(../images/siguiente.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 11%;
+	height: 7%;
+	right: -6%;
+	top: 45%;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.fadeIn {
+	animation: fadeIn ease 1s;
+	-webkit-animation: fadeIn ease 1s;
+	-moz-animation: fadeIn ease 1s;
+	-o-animation: fadeIn ease 1s;
+	-ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+/* SLIDE 1 */
