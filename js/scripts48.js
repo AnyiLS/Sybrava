@@ -82,10 +82,12 @@ $(document).ready(function () {
 
   function checkResults(isBlocked = false) {
     const score = updateScore();
+    localStorage.setItem('score', score)
+    localStorage.setItem('scored', TOTAL_QUESTIONS)
     const attempts = parseInt(localStorage.getItem("attempts") || "0");
 
     if (score === TOTAL_QUESTIONS || isBlocked || attempts >= MAX_ATTEMPTS) {
-      redirectTo("./index57.html");
+      redirectTo("./index60.html");
     }
   }
 
