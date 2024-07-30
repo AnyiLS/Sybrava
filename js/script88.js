@@ -34,83 +34,91 @@ let bandera = false
 
 $(document).ready(function () {
 	let bandera = false
+	$('.fondo-hove').on('click', () => {
+		$('.fondo-hove').css('display', 'none')
+		$('#abrir2').css('display', 'block')
+		$('#abrir3').css('display', 'block')
+		$('#abrir4').css('display', 'block')
+	});
+
 	$('#abrir1').on('click', function () {
-		console.log('hol')
-
-		if (bandera) {
-			$('.fondo-hove').css('display', 'none')
-			bandera = !bandera
-		} else {
-			$('.fondo-hove').css('display', 'block')
-			bandera = !bandera
-		}
+		$('.fondo-hove').css('display', 'block')
+		$('#abrir2').css('display', 'none')
+		$('#abrir3').css('display', 'none')
+		$('#abrir4').css('display', 'none')
 	})
 
-	let bandera1 = false
+	$('.fondo-hove2').on('click', () => {
+		$('.fondo-hove2').css('display', 'none')
+		$('#abrir1').css('display', 'block')
+		$('#abrir3').css('display', 'block')
+		$('#abrir4').css('display', 'block')
+	});
+
 	$('#abrir2').on('click', function () {
-		console.log('hol')
-
-		if (bandera1) {
-			$('.fondo-hove2').css('display', 'none')
-			bandera1 = !bandera1
-		} else {
-			$('.fondo-hove2').css('display', 'block')
-			bandera1 = !bandera1
-		}
+		$('.fondo-hove2').css('display', 'block')
+		$('#abrir1').css('display', 'none')
+		$('#abrir3').css('display', 'none')
+		$('#abrir4').css('display', 'none')
 	})
 
-	let bandera2 = false
+	$('.fondo-hove3').on('click', () => {
+		$('.fondo-hove3').css('display', 'none')
+		$('#abrir1').css('display', 'block')
+		$('#abrir2').css('display', 'block')
+		$('#abrir4').css('display', 'block')
+	});
+
 	$('#abrir3').on('click', function () {
-		console.log('hol')
-
-		if (bandera2) {
-			$('.fondo-hove3').css('display', 'none')
-			bandera2 = !bandera2
-		} else {
-			$('.fondo-hove3').css('display', 'block')
-			bandera2 = !bandera2
-		}
+		$('.fondo-hove3').css('display', 'block')
+		$('#abrir1').css('display', 'none')
+		$('#abrir2').css('display', 'none')
+		$('#abrir4').css('display', 'none')
 	})
 
-	let bandera3 = false
+	$('.fondo-hove4').on('click', () => {
+		$('.fondo-hove4').css('display', 'none')
+		$('#abrir1').css('display', 'block')
+		$('#abrir2').css('display', 'block')
+		$('#abrir3').css('display', 'block')
+	});
+
 	$('#abrir4').on('click', function () {
-		console.log('hol')
-
-		if (bandera3) {
-			$('.fondo-hove4').css('display', 'none')
-			bandera3 = !bandera3
-		} else {
-			$('.fondo-hove4').css('display', 'block')
-			bandera3 = !bandera3
-		}
+		$('.fondo-hove4').css('display', 'block')
+		$('#abrir1').css('display', 'none')
+		$('#abrir2').css('display', 'none')
+		$('#abrir3').css('display', 'none')
 	})
 
-	let bandera4 = false
+	$('.fondo-hove5').on('click', () => {
+		$('.fondo-hove5').css('display', 'none')
+		$('#abrir6').css('display', 'block')
+	});
+
 	$('#abrir5').on('click', function () {
-		console.log('hol')
-
-		if (bandera4) {
-			$('.fondo-hove5').css('display', 'none')
-			bandera4 = !bandera4
-		} else {
-			$('.fondo-hove5').css('display', 'block')
-			bandera4 = !bandera4
-		}
+		$('.fondo-hove5').css('display', 'block')
+		$('#abrir6').css('display', 'none')
 	})
 
-	let bandera5 = false
+	$('.fondo-hove6').on('click', () => {
+		$('.fondo-hove6').css('display', 'none')
+		$('#abrir5').css('display', 'block')
+	});
+
 	$('#abrir6').on('click', function () {
-		console.log('hol')
-
-		if (bandera5) {
-			$('.fondo-hove6').css('display', 'none')
-			bandera5 = !bandera5
-		} else {
-			$('.fondo-hove6').css('display', 'block')
-			bandera5 = !bandera5
-		}
+		$('.fondo-hove6').css('display', 'block')
+		$('#abrir5').css('display', 'none')
 	})
 
+	$('.fondo-hove7').on('click', () => {
+		$('.fondo-hove7').css('display', 'none')
+	});
+
+	$('#abrir7').on('click', function () {
+		$('.fondo-hove7').css('display', 'block')
+	})
+
+	
 
 	let bandera6 = false
 	$('#abrir7').on('click', function () {
