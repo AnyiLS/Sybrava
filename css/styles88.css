@@ -112,10 +112,10 @@ body {
 
 .abrir1 {
 	position: absolute;
-	width: 25.4%;
-	height: 2.3%;
-	right: 3%;
-	top: 43%;
+	width: 72.4%;
+    height: 4.3%;
+    right: 3%;
+    top: 44%;
 	z-index: 100;
 	cursor: pointer;
 }
@@ -148,7 +148,7 @@ body {
 	width: 57%;
 	height: 3.5%;
 	right: 3%;
-	top: 61%;
+	top: 66%;
 	z-index: 100;
 	cursor: pointer;
 }
@@ -181,8 +181,8 @@ body {
 	position: absolute;
 	width: 11%;
 	height: 2.5%;
-	right: 15%;
-	top: 67.7%;
+	right: 9%;
+    top: 72.2%;
 	z-index: 100;
 	cursor: pointer;
 }
@@ -215,8 +215,8 @@ body {
 	position: absolute;
 	width: 28%;
 	height: 2.5%;
-	right: 15%;
-	top: 90.7%;
+	right: 68%;
+    top: 92.7%;
 	z-index: 100;
 	cursor: pointer;
 }
@@ -272,7 +272,7 @@ body {
 	position: absolute;
 	width: 7%;
     height: 2.5%;
-    right: 41.1%;
+    right: 42.1%;
     top: 88.5%;
 	z-index: 100;
 	cursor: pointer;
@@ -307,7 +307,7 @@ body {
 	position: absolute;
 	width: 7%;
     height: 2.5%;
-    right: 32.6%;
+    right: 34.6%;
     top: 88.5%;
 	z-index: 10000;
 	cursor: pointer;
